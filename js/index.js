@@ -78,6 +78,7 @@ var app = {
 
          //       
 
+         /*
          var httpRequest;
 
          document.getElementById("info").onclick=function() {
@@ -135,7 +136,7 @@ var app = {
 
 
 
-
+*/
 
          //
 
