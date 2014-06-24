@@ -35,6 +35,10 @@
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 
+
+
+
+
 </head>
 
 <!-- 
@@ -68,7 +72,6 @@
 <ul data-role="listview" data-inset="true">
 <li data-icon="false"><a href="#RegPage"><center>Register</center></a></li>
 <li data-icon="false"><a href="#SignInPage"><center>Sign In</center></a></li>
-<li data-icon="false"><a href="#MenuPage"><center>Menu</center></a></li>
 </ul>
 
 </div>
@@ -137,20 +140,20 @@
 <center><img src="Logo.png" height="40px" width="120px"></center>
 </div>
 
-<form id="Login" method="GET" action="http://1-dot-anuragbagalwadisample.appspot.com/phollar/Login">
+<form id="Login">
 <div data-role="content" data-swatch="a">
 
 <div data-role="fieldcontain">
 <label for="inp_tw23">Email:</label>
-<input type="text" name="email" id="inp_tw23" data-mini="true"/>
+<input type="text" id="email1" id="inp_tw23" data-mini="true"/>
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw23">Password:</label>
-<input type="text" name="password" id="inp_tw23" data-mini="true"/>
+<input type="password" id="password1" id="inp_tw23" data-mini="true"/>
 </div>
 <div>
 
-<center><input type="submit" value="Sign In!" data-inline="true"></center>
+<center><input type="button" id="button1" value="Sign In!" data-inline="true"></center>
 </div>
 
 </div>
@@ -161,6 +164,25 @@
 <h1>ⒸGoCent</h1>
 </div>
 </div>
+
+<script>
+
+$("#button1").click(function() {
+var mail=email1.value;
+var pass=password1.value;
+$.ajax({
+  dataType: "jsonp",
+  url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Login",
+  data: {'email': mail,'password': pass},
+  success: function(response){if(response.valid=="true"){window.open("#MenuPage","_self")}else if(response.valid=="false"){alert("Invalid user!");}}
+});
+
+});
+
+
+
+
+</script>
  
 
 
@@ -175,7 +197,7 @@
 <center><img src="Logo.png" height="40px" width="120px"></center></div>
 <div data-role="content" data-swatch="a">
 
-<ul data-role="listview">
+<ul data-role="listview" data-inset="true">
 <li data-icon="false"><a href="#" id="scan">Make Payment</a></li>
 <li data-icon="false"><a href="#" id="encode">Get Payment</a></li>
 <li data-icon="false"><a href="#EditWalletPage">Edit Wallet</a></li>
