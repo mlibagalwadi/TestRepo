@@ -21,60 +21,200 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">
+<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
-<link rel="stylesheet" href="jquery.mobile-1.1.0.custom.css?" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <link rel="stylesheet" href="jquery.mobile-1.1.0.custom.css?" />
+ -->    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
    <!--     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" href="themes/PhollarPay.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.structure-1.4.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
 </head>
+
+<!-- 
+ -->
+
+
+<!-- 
+ -->
+
+
+
+
+
+
 <body>
 
-<div id="Menu" data-url="Menu" data-role="page">
-<div data-role="header" data-theme="b">
-<h1>Menu</h1>
+
+
+
+<!--         Welcome Page               -->
+
+
+
+<div id="Welcome" data-url="Welcome" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center>
 </div>
 
-<div data-role="content">
+<div data-role="content" data-swatch="a">
+
+<ul data-role="listview" data-inset="true">
+<li data-icon="false"><a href="#RegPage"><center>Register</center></a></li>
+<li data-icon="false"><a href="#SignInPage"><center>Sign In</center></a></li>
+<li data-icon="false"><a href="#MenuPage"><center>Menu</center></a></li>
+</ul>
+
+</div>
+
+<div data-role="footer" data-theme="a" data-position="fixed">
+<h1>ⒸGoCent</h1>
+</div>
+</div>
+ 
+
+
+
+<!--         Registration               -->
+
+
+
+<div id="RegPage" data-url="RegPage" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center>
+</div>
+
+
+<form id="Registration" method="GET" action="http://1-dot-anuragbagalwadisample.appspot.com/phollar/Registration">
+
+<div data-role="content" data-swatch="a">
+
+
+<div data-role="fieldcontain">
+<label for="inp_tw31">First Name:</label>
+<input type="text" name="fName" id="inp_tw31" />
+</div>
+<div data-role="fieldcontain">
+<label for="inp_tw23">Last Name:</label>
+<input type="text" name="lName" id="inp_tw23" data-mini="true"/>
+</div>
+<div data-role="fieldcontain">
+<label for="inp_tw23">Email:</label>
+<input type="text" name="email" id="inp_tw23">
+</div>
+<div data-role="fieldcontain">
+<label for="inp_tw30">Password:</label>
+<input type="password" name="password" id="inp_tw30"  data-mini="true"/>
+</div>
+<div data-role="fieldcontain">
+<label for="inp_tw32">Currency Code:</label>
+<input type="text" name="currency" id="inp_tw32" />
+</div>
+<div>
+<center><input type="submit" value="Register!" data-inline="true"></center>
+</div>
+</div>
+</form>
+
+<div data-role="footer" data-theme="a" data-position="fixed">
+<h1>ⒸGoCent</h1>
+
+</div>
+</div>
+
+
+
+<!--         Sign In               -->
+
+<div id="SignInPage" data-url="SignInPage" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center>
+</div>
+
+<form id="Login" method="GET" action="http://1-dot-anuragbagalwadisample.appspot.com/phollar/Login">
+<div data-role="content" data-swatch="a">
+
+<div data-role="fieldcontain">
+<label for="inp_tw23">Email:</label>
+<input type="text" name="email" id="inp_tw23" data-mini="true"/>
+</div>
+<div data-role="fieldcontain">
+<label for="inp_tw23">Password:</label>
+<input type="text" name="password" id="inp_tw23" data-mini="true"/>
+</div>
+<div>
+
+<center><input type="submit" value="Sign In!" data-inline="true"></center>
+</div>
+
+</div>
+
+</form>
+
+<div data-role="footer" data-swatch="a" data-position="fixed">
+<h1>ⒸGoCent</h1>
+</div>
+</div>
+ 
+
+
+
+
+<!--             Menu Page              -->
+
+
+
+<div id="MenuPage" data-url="MenuPage" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center></div>
+<div data-role="content" data-swatch="a">
 
 <ul data-role="listview">
-<li><a href="#QRPage">Scan QR code</a></li>
-<li><a href="#SelectPage">Select card</a></li>
+<li data-icon="false"><a href="#" id="scan">Make Payment</a></li>
+<li data-icon="false"><a href="#" id="encode">Get Payment</a></li>
+<li data-icon="false"><a href="#EditWalletPage">Edit Wallet</a></li>
 </ul>
-<br>
-<a id="addcard" href="#AddCardPage" data-role="button" data-icon="plus">Add card</a>
-
 </div>
 
-<div data-role="footer" data-theme="d" data-position="fixed">
+<div data-role="footer" data-swatch="a" data-position="fixed">
 <h1>ⒸGoCent</h1>
 </div>
 </div>
 
-<div id="QRPage" data-url="QRPage" data-role="page">
-<div data-role="header">
+<!-- 
+<div id="DecodePage" data-url="DecodePage" data-role="page">
+<div data-role="header" data-swatch="a">
 <h1>Scanning...</h1>
 </div>
 
- <div  data-role="content">        
+ <div  data-role="content" data-swatch="a">        
         <p><a href="#" class="topcoat-button" id="scan">SCAN</a></p>
         <p><a href="#" class="topcoat-button" id="encode">ENCODE</a></p>
         <p id="info"></p>
 </div>
 
-<div data-role="footer" data-theme="d" data-position="fixed">
+<div data-role="footer" data-swatch="a" data-position="fixed">
 <h1>ⒸGoCent</h1>
 </div>
-</div>
+</div> -->
+
+
+
+<!--                Select card Page                -->
 
 <div id="SelectPage" data-url="SelectPage" data-role="page">
-<div data-role="header">
-<h1>Select Card</h1>
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center>
 </div>
 
-<div data-role="content">
+<div data-role="content" data-swatch="a">
+<h1>Select Card</h1>
 <div data-role="fieldcontain">
 <label for="sel_tw14">Please select card</label>
 <select name="sel_tw14" id="sel_tw14" data-native-menu="false">
@@ -84,21 +224,29 @@
 
 </div>
 
-<div data-role="footer" data-theme="d" data-position="fixed">
+<div data-role="footer" data-swatch="a" data-position="fixed">
 <h1>ⒸGoCent</h1>
 </div>
 </div>
 
-<div id="AddCardPage" data-url="AddCardPage" data-role="page">
-<div data-role="header"
-><h1>Card Details</h1>
+
+
+
+<!--           Edit Wallet Page        -->
+
+
+
+<div id="EditWalletPage" data-url="EditWalletPage" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center>
+
 </div>
 
-<div data-role="content">
-<form id="newcard" method="GET" action="http://1-dot-anuragbagalwadisample.appspot.com/payment/details">
 
-<div data-role="content">
+<form id="newcard" method="GET" action="">
 
+<div data-role="content" data-swatch="a">
+<h1>Card Details</h1>
 
 <div data-role="fieldcontain">
 <label for="inp_tw31">Name on card</label>
@@ -115,22 +263,35 @@
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw30">Year of Expiry</label>
-<input type="number" name="Eyear" id="inp_tw30"  data-mini="true"/>
+<input type="text" name="Eyear" id="inp_tw30"  data-mini="true"/>
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw32">CVV</label>
 <input type="number" name="cvv" id="inp_tw32" />
 </div>
 <div>
-<input type="submit" value="submit">
+<center><input type="submit" value="submit" data-inline="true"></center>
 </div>
 </div>
 </form>
-</div>
-<div data-role="footer" data-theme="d" data-position="fixed">
+
+<div data-role="footer" data-swatch="a" data-position="fixed">
 <h1>ⒸGoCent</h1>
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
      <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="barcodescanner.js"></script>
         <script type="text/javascript" src="childbrowser.js"></script>
