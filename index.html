@@ -1,4 +1,5 @@
 <!--
+
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
     distributed with this work for additional information
@@ -15,6 +16,7 @@
      KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License.
+
 -->
 <!DOCTYPE html>
 <html>
@@ -70,8 +72,8 @@
 <div data-role="content" data-swatch="a">
 
 <ul data-role="listview" data-inset="true">
-<li data-icon="false"><a href="#RegPage"><center>Register</center></a></li>
-<li data-icon="false"><a href="#SignInPage"><center>Sign In</center></a></li>
+<li data-icon="false"><a href="#RegPage" data-transition="pop"><center>Register</center></a></li>
+<li data-icon="false"><a href="#SignInPage" data-transition="pop"><center>Sign In</center></a></li>
 </ul>
 
 </div>
@@ -94,33 +96,34 @@
 </div>
 
 
-<form id="Registration" method="GET" action="http://1-dot-anuragbagalwadisample.appspot.com/phollar/Registration">
+<form id="Registration">
 
 <div data-role="content" data-swatch="a">
 
 
 <div data-role="fieldcontain">
 <label for="inp_tw31">First Name:</label>
-<input type="text" name="fName" id="inp_tw31" />
+
+<input type="text" id="fName" id="inp_tw31" /> 
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw23">Last Name:</label>
-<input type="text" name="lName" id="inp_tw23" data-mini="true"/>
+<input type="text" id="lName" id="inp_tw23" data-mini="true"/>
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw23">Email:</label>
-<input type="text" name="email" id="inp_tw23">
+<input type="text" id="email" id="inp_tw23">
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw30">Password:</label>
-<input type="password" name="password" id="inp_tw30"  data-mini="true"/>
+<input type="password" id="password" id="inp_tw30"  data-mini="true"/>
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw32">Currency Code:</label>
-<input type="text" name="currency" id="inp_tw32" />
-</div>
+<input type="text" id="currency" id="inp_tw32" />
+</div> 
 <div>
-<center><input type="submit" value="Register!" data-inline="true"></center>
+<center><input type="button" id="regbutton" value="Register!" data-inline="true"></center>
 </div>
 </div>
 </form>
@@ -153,7 +156,7 @@
 </div>
 <div>
 
-<center><input type="button" id="button1" value="Sign In!" data-inline="true"></center>
+<center><input type="button" id="loginbutton" value="Sign In!" data-inline="true"></center>
 </div>
 
 </div>
@@ -165,25 +168,34 @@
 </div>
 </div>
 
-<script>
 
-$("#button1").click(function() {
-var mail=email1.value;
-var pass=password1.value;
-$.ajax({
-  dataType: "jsonp",
-  url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Login",
-  data: {'email': mail,'password': pass},
-  success: function(response){if(response.valid=="true"){window.open("#MenuPage","_self")}else if(response.valid=="false"){alert("Invalid user!");}}
-});
-
-});
+<!--               Edit Wallet              -->
 
 
+<div id="EditWalletPage" data-url="EditWalletPage" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center></div>
+<div data-role="content" data-swatch="a">
+
+<ul data-role="listview" data-inset="true">
+<li data-icon="false"><a href="#" data-transition="pop"><center>View Existing Cards</center></a></li>
+<li data-icon="false"><a href="#AddCardPage" data-transition="pop"><center>Add New Card</center></a></li>
+</ul>
+</div>
+
+<div data-role="footer" data-swatch="a" data-position="fixed">
+<h1>ⒸGoCent</h1>
+</div>
+</div>
 
 
-</script>
- 
+
+
+
+<!--     -->
+
+
+
 
 
 
@@ -198,9 +210,9 @@ $.ajax({
 <div data-role="content" data-swatch="a">
 
 <ul data-role="listview" data-inset="true">
-<li data-icon="false"><a href="#" id="scan">Make Payment</a></li>
-<li data-icon="false"><a href="#" id="encode">Get Payment</a></li>
-<li data-icon="false"><a href="#EditWalletPage">Edit Wallet</a></li>
+<li data-icon="false"><a href="#" id="scan" data-transition="pop"><center>Make Payment</center></a></li>
+<li data-icon="false"><a href="#" id="encode" data-transition="pop"><center>Get Payment</center></a></li>
+<li data-icon="false"><a href="#EditWalletPage" data-transition="pop"><center>Edit Wallet</center></a></li>
 </ul>
 </div>
 
@@ -254,11 +266,11 @@ $.ajax({
 
 
 
-<!--           Edit Wallet Page        -->
+<!--           Add Card Page        -->
 
 
 
-<div id="EditWalletPage" data-url="EditWalletPage" data-role="page">
+<div id="AddCardPage" data-url="AddCardPage" data-role="page">
 <div data-role="header" data-swatch="a">
 <center><img src="Logo.png" height="40px" width="120px"></center>
 
@@ -280,8 +292,7 @@ $.ajax({
 </div>
 <div data-role="fieldcontain">
 <label for="sel_tw28">Month of Expiry</label>
-<select name="emon" id="sel_tw28" data-native-menu="false">
-<option value="January">January</option><option value="February">February</option><option value="March">March</option><option value="April">April</option><option value="May">May</option><option value="June">June</option><option value="July">July</option><option value="August">August</option><option value="September">September</option><option value="October">October</option><option value="November">November</option><option value="December">December</option></select>
+<input type="text" name="emon" id="inp_tw23" data-mini="true"/>
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw30">Year of Expiry</label>
@@ -292,7 +303,7 @@ $.ajax({
 <input type="number" name="cvv" id="inp_tw32" />
 </div>
 <div>
-<center><input type="submit" value="submit" data-inline="true"></center>
+<center><input type="button" value="save" data-inline="true"></center>
 </div>
 </div>
 </form>
@@ -306,18 +317,47 @@ $.ajax({
 
 
 
+    <script>
+
+    $("#loginbutton").click(function() {
+
+    $.ajax({
+      dataType: "jsonp",
+      url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Login",
+      data: {'email': email1.value,'password': password1.value},
+      success: function(response){if(response.valid=="true"){window.open("#MenuPage","_self")}else if(response.valid=="false"){alert("Invalid user!");}}
+    });
+
+    });
+    </script>
+
+    <script>
+
+    $("#regbutton").click(function() {
+
+    $.ajax({
+      dataType: "jsonp",
+      url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Registration",
+      data: {'fName': fName.value,'lName': lName.value,'email': email.value,'password': password.value,'currency': currency.value},
+      success: function(response){if(response.valid=="true"){alert("Great to have you on board!");window.open("#MenuPage","_self")}else if(response.valid=="false"){alert("User already exists!");}}
+    });
+
+    });
+
+
+    </script>
+     
 
 
 
+    
 
 
 
-
-
-     <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="barcodescanner.js"></script>
-        <script type="text/javascript" src="childbrowser.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <!-- <script type="text/javascript" src="cordova.js"></script>
+         <script type="text/javascript" src="barcodescanner.js"></script>
+         <script type="text/javascript" src="childbrowser.js"></script>
+         <script type="text/javascript" src="js/index.js"></script> -->
         <script type="text/javascript">
             app.initialize();
         </script>
