@@ -135,6 +135,23 @@
 </div>
 
 
+    <script>
+
+    $("#regbutton").click(function() {
+
+    $.ajax({
+      dataType: "jsonp",
+      url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Registration",
+      data: {'fName': fName.value,'lName': lName.value,'email': email.value,'password': password.value,'currency': currency.value},
+      success: function(response){if(response.valid=="true"){alert("Great to have you on board!");window.open("#MenuPage","_self")}else if(response.valid=="false"){alert("User already exists!");}}
+    });
+
+    });
+
+
+    </script>
+
+
 
 <!--         Sign In               -->
 
@@ -167,6 +184,22 @@
 <h1>ⒸGoCent</h1>
 </div>
 </div>
+
+    <script>
+
+    $("#loginbutton").click(function() {
+
+    $.ajax({
+      dataType: "jsonp",
+      url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Login",
+      data: {'email': email1.value,'password': password1.value},
+      success: function(response){if(response.valid=="true"){window.open("#MenuPage","_self")}else if(response.valid=="false"){alert("Invalid user!");}}
+    });
+
+    });
+    </script>
+
+
 
 
 <!--               Edit Wallet              -->
@@ -207,11 +240,12 @@
 <div id="MenuPage" data-url="MenuPage" data-role="page">
 <div data-role="header" data-swatch="a">
 <center><img src="Logo.png" height="40px" width="120px"></center></div>
+
 <div data-role="content" data-swatch="a">
 
 <ul data-role="listview" data-inset="true">
-<li data-icon="false"><center><a href="#DecodePage"><center>Make Payment</center></a></li>
-<li data-icon="false"><a href="#Encode Page"><center>Get Payment</center></a></li>
+<li data-icon="false"><a href="#" id="scan">Make Payment</a></li>
+<li data-icon="false"><a href="#" id="encode">Get Payment</a></li>
 <li data-icon="false"><a href="#EditWalletPage"><center>Edit Wallet</center></a></li>
 </ul>
 </div>
@@ -221,7 +255,7 @@
 </div>
 </div>
 
-
+<!--
 <div id="DecodePage" data-url="DecodePage" data-role="page">
 <div data-role="header" data-swatch="a">
 <h1>Scanning...</h1>
@@ -238,7 +272,7 @@
 </div>
 </div>
 
-
+-->
 
 <!--                Select card Page                -->
 
@@ -313,53 +347,15 @@
 </div>
 </div>
 
-
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-
-
-    <script>
-
-    $("#loginbutton").click(function() {
-
-    $.ajax({
-      dataType: "jsonp",
-      url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Login",
-      data: {'email': email1.value,'password': password1.value},
-      success: function(response){if(response.valid=="true"){window.open("#MenuPage","_self")}else if(response.valid=="false"){alert("Invalid user!");}}
-    });
-
-    });
-    </script>
-
-    <script>
-
-    $("#regbutton").click(function() {
-
-    $.ajax({
-      dataType: "jsonp",
-      url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Registration",
-      data: {'fName': fName.value,'lName': lName.value,'email': email.value,'password': password.value,'currency': currency.value},
-      success: function(response){if(response.valid=="true"){alert("Great to have you on board!");window.open("#MenuPage","_self")}else if(response.valid=="false"){alert("User already exists!");}}
-    });
-
-    });
-
-
-    </script>
-     
-
-
-
-    
-
-
+        
 
         <script type="text/javascript" src="cordova.js"></script>
          <script type="text/javascript" src="barcodescanner.js"></script>
          <script type="text/javascript" src="childbrowser.js"></script>
          <script type="text/javascript" src="js/index.js"></script>
+         <script type="text/javascript">
+            app.initialize();
+        </script>
 
 </body>
 </html>
