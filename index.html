@@ -40,13 +40,13 @@
 <script>
 
 var isOld = localStorage.getItem("existing");
-if(isOld!=null)
+if(isOld==null)
 {
-    window.open("#MenuPage","_self");
+    window.open("#Welcome","_self");
 }
 else
 {
-    window.open("#Welcome","_self");
+    window.open("#MenuPage","_self");
 }
 
 </script>
