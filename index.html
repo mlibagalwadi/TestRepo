@@ -155,7 +155,16 @@ if(localStorage.getItem("existing")!=null)
       dataType: "jsonp",
       url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Registration",
       data: {'fName': fName.value,'lName': lName.value,'email': email.value,'password': password.value,'currency': currency.value},
-      success: function(response){if(response.valid=="true"){alert("Great to have you on board!");window.open("#MenuPage","_self")}else if(response.valid=="false"){alert("User already exists!");}}
+      success: function(response){
+                if(response.valid=="true"){
+                    alert("Great to have you on board!");
+                    localStorage["existing"] = email.value;
+                    window.open("#MenuPage","_self");
+                }
+                else if(response.valid=="false"){
+                    alert("User already exists!");
+                }
+            }
     });
 
     });
