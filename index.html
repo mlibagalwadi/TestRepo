@@ -37,7 +37,19 @@
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 
+<script>
+localStorage.user=email1;
 
+if(localStorage.user!=null)
+{
+    window.open("#MenuPage","_self")
+}
+else
+{
+    window.open("#Welcome","_self")
+}
+
+</script>
 
 
 
@@ -325,11 +337,11 @@
 <input type="text" name="cno" id="inp_tw23" value="xxxxxxxxxxxxxxxx" data-mini="true"/>
 </div>
 <div data-role="fieldcontain">
-<label for="sel_tw28">Month of Expiry</label>
+<label for="sel_tw28">Month of Expiry (MM)</label>
 <input type="text" name="emon" id="inp_tw23" data-mini="true"/>
 </div>
 <div data-role="fieldcontain">
-<label for="inp_tw30">Year of Expiry</label>
+<label for="inp_tw30">Year of Expiry (YY)</label>
 <input type="text" name="Eyear" id="inp_tw30"  data-mini="true"/>
 </div>
 <div data-role="fieldcontain">
