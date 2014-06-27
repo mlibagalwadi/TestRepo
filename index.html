@@ -39,8 +39,6 @@
 
 <script>
 
-var localStorage.existing=email1.value;
-
 if(localStorage.existing==null)
 {
     window.open("#Welcome","_self");
@@ -71,48 +69,6 @@ else
 <body>
 
 
-
-
-<!--             Menu Page              -->
-
-
-
-<div id="MenuPage" data-url="MenuPage" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center></div>
-
-<div data-role="content" data-swatch="a">
-
-<ul data-role="listview" data-inset="true">
-<li data-icon="false"><a href="#" id="scan"><center>Make Payment</center></a></li>
-<li data-icon="false"><a href="#" id="encode"><center>Get Payment</center></a></li>
-<li data-icon="false"><a href="#EditWalletPage"><center>Edit Wallet</center></a></li>
-</ul>
-</div>
-
-<div data-role="footer" data-swatch="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
-<!--
-<div id="DecodePage" data-url="DecodePage" data-role="page">
-<div data-role="header" data-swatch="a">
-<h1>Scanning...</h1>
-</div>
-
- <div  data-role="content" data-swatch="a">        
-        <p><a href="#" class="topcoat-button" id="scan">SCAN</a></p>
-        <p><a href="#" class="topcoat-button" id="encode">ENCODE</a></p>
-        <p id="info"></p>
-</div>
-
-<div data-role="footer" data-swatch="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
--->
 
 
 
@@ -249,7 +205,15 @@ else
       dataType: "jsonp",
       url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Login",
       data: {'email': email1.value,'password': password1.value},
-      success: function(response){if(response.valid=="true"){window.open("#MenuPage","_self")}else if(response.valid=="false"){alert("Invalid user!");}}
+        success: function(response){
+            if(response.valid=="true"){
+                localStorage.existing=email1.value;
+                window.open("#MenuPage","_self");
+            }
+            else if(response.valid=="false"){
+                alert("Invalid user!");
+            }
+        }
     });
 
     });
