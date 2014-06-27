@@ -38,15 +38,16 @@
 <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 
 <script>
-localStorage.user=email1;
 
-if(localStorage.user!=null)
+var localStorage.existing=email1.value;
+
+if(localStorage.existing==null)
 {
-    window.open("#MenuPage","_self")
+    window.open("#Welcome","_self");
 }
 else
 {
-    window.open("#Welcome","_self")
+    window.open("#MenuPage","_self");
 }
 
 </script>
@@ -69,6 +70,49 @@ else
 
 <body>
 
+
+
+
+<!--             Menu Page              -->
+
+
+
+<div id="MenuPage" data-url="MenuPage" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center></div>
+
+<div data-role="content" data-swatch="a">
+
+<ul data-role="listview" data-inset="true">
+<li data-icon="false"><a href="#" id="scan"><center>Make Payment</center></a></li>
+<li data-icon="false"><a href="#" id="encode"><center>Get Payment</center></a></li>
+<li data-icon="false"><a href="#EditWalletPage"><center>Edit Wallet</center></a></li>
+</ul>
+</div>
+
+<div data-role="footer" data-swatch="a" data-position="fixed">
+<h1>ⒸGoCent</h1>
+</div>
+</div>
+
+<!--
+<div id="DecodePage" data-url="DecodePage" data-role="page">
+<div data-role="header" data-swatch="a">
+<h1>Scanning...</h1>
+</div>
+
+ <div  data-role="content" data-swatch="a">        
+        <p><a href="#" class="topcoat-button" id="scan">SCAN</a></p>
+        <p><a href="#" class="topcoat-button" id="encode">ENCODE</a></p>
+        <p id="info"></p>
+</div>
+
+<div data-role="footer" data-swatch="a" data-position="fixed">
+<h1>ⒸGoCent</h1>
+</div>
+</div>
+
+-->
 
 
 
@@ -245,46 +289,6 @@ else
 
 
 
-<!--             Menu Page              -->
-
-
-
-<div id="MenuPage" data-url="MenuPage" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center></div>
-
-<div data-role="content" data-swatch="a">
-
-<ul data-role="listview" data-inset="true">
-<li data-icon="false"><a href="#" id="scan"><center>Make Payment</center></a></li>
-<li data-icon="false"><a href="#" id="encode"><center>Get Payment</center></a></li>
-<li data-icon="false"><a href="#EditWalletPage"><center>Edit Wallet</center></a></li>
-</ul>
-</div>
-
-<div data-role="footer" data-swatch="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
-<!--
-<div id="DecodePage" data-url="DecodePage" data-role="page">
-<div data-role="header" data-swatch="a">
-<h1>Scanning...</h1>
-</div>
-
- <div  data-role="content" data-swatch="a">        
-        <p><a href="#" class="topcoat-button" id="scan">SCAN</a></p>
-        <p><a href="#" class="topcoat-button" id="encode">ENCODE</a></p>
-        <p id="info"></p>
-</div>
-
-<div data-role="footer" data-swatch="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
--->
 
 <!--                Select card Page                -->
 
