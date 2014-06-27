@@ -39,13 +39,14 @@
 
 <script>
 
-if(localStorage.existing==null)
+var isOld = localStorage.getItem("existing");
+if(isOld!=null)
 {
-    window.open("#Welcome","_self");
+    window.open("#MenuPage","_self");
 }
 else
 {
-    window.open("#MenuPage","_self");
+    window.open("#Welcome","_self");
 }
 
 </script>
@@ -207,7 +208,7 @@ else
       data: {'email': email1.value,'password': password1.value},
         success: function(response){
             if(response.valid=="true"){
-                localStorage.existing=email1.value;
+                localStorage["existing"] = email1.value;
                 window.open("#MenuPage","_self");
             }
             else if(response.valid=="false"){
