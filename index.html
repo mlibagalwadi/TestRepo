@@ -39,15 +39,14 @@
 
 <script>
 
-var isOld = localStorage.getItem("existing");
-if(isOld==null)
-{
-    window.open("#Welcome","_self");
-}
-else
+if(localStorage.getItem("existing")!=null)
 {
     window.open("#MenuPage","_self");
 }
+ else
+ {
+     window.open("#Welcome","_self");
+ }
 
 </script>
 
@@ -248,6 +247,48 @@ else
 
 <!--     -->
 
+
+
+<!--             Menu Page              -->
+
+
+
+<div id="MenuPage" data-url="MenuPage" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center></div>
+
+<div data-role="content" data-swatch="a">
+
+<ul data-role="listview" data-inset="true">
+<li data-icon="false"><a href="#" id="scan"><center>Make Payment</center></a></li>
+<li data-icon="false"><a href="#" id="encode"><center>Get Payment</center></a></li>
+<li data-icon="false"><a href="#EditWalletPage"><center>Edit Wallet</center></a></li>
+</ul>
+</div>
+
+<div data-role="footer" data-swatch="a" data-position="fixed">
+<h1>ⒸGoCent</h1>
+</div>
+</div>
+
+<!--
+<div id="DecodePage" data-url="DecodePage" data-role="page">
+<div data-role="header" data-swatch="a">
+<h1>Scanning...</h1>
+</div>
+
+ <div  data-role="content" data-swatch="a">        
+        <p><a href="#" class="topcoat-button" id="scan">SCAN</a></p>
+        <p><a href="#" class="topcoat-button" id="encode">ENCODE</a></p>
+        <p id="info"></p>
+</div>
+
+<div data-role="footer" data-swatch="a" data-position="fixed">
+<h1>ⒸGoCent</h1>
+</div>
+</div>
+
+-->
 
 
 
