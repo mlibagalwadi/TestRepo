@@ -37,314 +37,37 @@
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 <link href="css/bootstrap.css" rel="stylesheet">
-<link href="dashboard.css" rel="stylesheet">
 
-<script>
-
-if(localStorage.getItem("existing")!=null)
-{
-   window.open("#MenuPage","_self");
-}
- else
- {
-    window.open("#Welcome","_self");
-}
-
-</script>
-
+    <link href="dashboard.css" rel="stylesheet">
 
 
 </head>
+
+<!-- 
+ -->
+
+
+<!-- 
+ -->
+
+
+
+
 
 
 <body>
 
 
+<script>
 
-
-
-<!--         Welcome Page               -->
-
-
-
-<div id="Welcome" data-url="Welcome" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center>
-</div>
-
-<div data-role="content" data-swatch="a">
-
-<ul data-role="listview" data-inset="true">
-<li data-icon="false" onclick="IsMerch()"><a><center>Register</center></a></li>
-<li data-icon="false"><a href="#SignInPage"><center>Sign In</center></a></li>
-</ul>
-
-</div>
-
-<div data-role="footer" data-theme="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
-<!-- <div id="dialog-confirm">
-  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Do you want to register as a Merchant?</p>
-</div>
- 
- -->
- <script type="text/javascript">
- function IsMerch()
- {
-    var answer = confirm("Register as a merchant?")
-    if (answer){
-           window.open("#MerReg","_self");
-    }
-    else{
-             window.open("#CusReg","_self");
-    }
-
-
-
- }
-
-
-
- </script>
-
-
-
-
-
-<!--         Customer Registration               -->
-
-
-
-<div id="CusReg" data-url="CusReg" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center>
-</div>
-
-
-<form id="Registration">
-
-<div data-role="content" data-swatch="a">
-<center><h3>Customer Registration</h3></center>
-
-<div data-role="fieldcontain">
-<label for="inp_tw31">First Name:</label>
-
-<input type="text" id="fName" id="inp_tw31" /> 
-</div>
-<div data-role="fieldcontain">
-<label for="inp_tw23">Last Name:</label>
-<input type="text" id="lName" id="inp_tw23" data-mini="true"/>
-</div>
-<div data-role="fieldcontain">
-<label for="inp_tw23">Email:</label>
-<input type="text" id="email" id="inp_tw23">
-</div>
-<div data-role="fieldcontain">
-<label for="inp_tw30">Password:</label>
-<input type="password" id="password" id="inp_tw30"  data-mini="true"/>
-</div>
-<div>
-<center><input type="button" id="Cregbutton" value="Register!" data-inline="true"></center>
-</div>
-</div>
-</form>
-
-<div data-role="footer" data-theme="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-
-</div>
-</div>
-
-
-
-
-
-
-    <script>
-
-    $("#Cregbutton").click(function() {
-
-    $.ajax({
-      dataType: "jsonp",
-      url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Registration",
-      data: {'fName': fName.value,'lName': lName.value,'email': email.value,'password': password.value},
-      success: function(response){
-                if(response.valid=="true"){
-                    alert("Great to have you on board!");
-                    localStorage["existing"] = email.value;
-                    window.open("#MenuPage","_self");
-                }
-                else if(response.valid=="false"){
-                    alert("User already exists!");
-                }
-            }
-    });
-
-    });
-
-
-    </script>
-
-
-
-
-<!--         Merchant Registration               -->
-
-
-
-<div id="MerReg" data-url="MerReg" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center>
-</div>
-
-
-<form id="RegistrationMerchant">
-
-<div data-role="content" data-swatch="a">
-<center><h3>Merchant Registration</h3></center>
-
-
-<div data-role="fieldcontain">
-<label for="inp_tw31">Merchant Name:</label>
-<input type="text" id="merName" id="inp_tw31" /> 
-</div>
-
-<div data-role="fieldcontain">
-<label for="inp_tw23">Email:</label>
-<input type="text" id="email2" id="inp_tw23">
-</div>
-
-<div data-role="fieldcontain">
-<label for="inp_tw30">Password:</label>
-<input type="password" id="password2" id="inp_tw30"  data-mini="true"/>
-</div>
-
-<div data-role="fieldcontain">
-<label for="inp_tw32">Currency Code:</label>
-<input type="text" id="currency2" id="inp_tw32" />
-</div> 
-
-
-<div data-role="fieldcontain">
-<label for="inp_tw32">Stripe Key:</label>
-<input type="text" id="stripeKey" id="inp_tw32" />
-</div> 
-
-
-<div>
-<center><input type="button" id="Mregbutton" value="Register!" data-inline="true"></center>
-</div>
-</div>
-</form>
-
-<div data-role="footer" data-theme="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-
-</div>
-</div>
-
-
-
-
-
-
-    <script>
-
-    $("#Mregbutton").click(function() {
-
-    $.ajax({
-      dataType: "jsonp",
-      url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Registration",
-      data: {/*'fName': null,'lName': null,*/'email': email2.value,'currency': currency2.value,'password': password2.value,'merchantName': merName.value,'stripeKey': stripeKey.value},
-      success: function(response){
-                if(response.valid=="true"){
-                    alert("Great to have you on board!");
-                    localStorage["existing"] = email2.value;
-                    window.open("#MenuPage","_self");
-                }
-                else if(response.valid=="false"){
-                    alert("User already exists!");
-                }
-            }
-    });
-
-    });
-
-
-    </script>
-
-
-
-
-
-
-
-<!--         Sign In               -->
-
-<div id="SignInPage" data-url="SignInPage" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center>
-</div>
-
-<form id="Login">
-<div data-role="content" data-swatch="a">
-
-<div data-role="fieldcontain">
-<label for="inp_tw23">Email:</label>
-<input type="text" id="email1" id="inp_tw23" data-mini="true"/>
-</div>
-<div data-role="fieldcontain">
-<label for="inp_tw23">Password:</label>
-<input type="password" id="password1" id="inp_tw23" data-mini="true"/>
-</div>
-<div>
-
-<center><input type="button" id="loginbutton" value="Sign In!" data-inline="true"></center>
-</div>
-
-</div>
-
-</form>
-
-<div data-role="footer" data-swatch="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
-    <script>
-
-    $("#loginbutton").click(function() {
-
-    $.ajax({
-      dataType: "jsonp",
-      url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Login",
-      data: {'email': email1.value,'password': password1.value},
-        success: function(response){
-            if(response.valid=="true"){
-                localStorage["existing"] = email1.value;
-                window.open("#MenuPage","_self");
-            }
-            else if(response.valid=="false"){
-                alert("Invalid user!");
-            }
-        }
-    });
-
-    });
-    </script>
-
-
-
+</script>
 
 
 <!--         Wallet Page               -->
 
 
 
-<div id="WalletPage" data-url="WalletPage" data-role="page">
+<div id="Welcome" data-url="Welcome" data-role="page">
 <div data-role="header" data-swatch="a">
 <center><img src="Logo.png" height="40px" width="120px"></center>
 </div>
@@ -376,6 +99,7 @@ if(localStorage.getItem("existing")!=null)
 
 <div data-role="content" data-swatch="a">
 
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
        <center> <img src="img/dash.png" width="50px" height="50px"><center>        
           <center><h4 class="header">Transaction History</h4></center>
@@ -508,6 +232,7 @@ if(localStorage.getItem("existing")!=null)
             </table>
           </div>
           </div> 
+        </div>
 
 </div>
 
@@ -528,6 +253,7 @@ if(localStorage.getItem("existing")!=null)
 
 <div data-role="content" data-swatch="a">
 
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
        <center> <img src="img/clipboard.png" width="50px" height="50px"><center>        
           <center><h4 class="header">Inventory List</h4></center>
@@ -660,6 +386,7 @@ if(localStorage.getItem("existing")!=null)
             </table>
           </div>
           </div> 
+        </div>
 
 </div>
 
@@ -670,127 +397,13 @@ if(localStorage.getItem("existing")!=null)
  
 
 
-<!--             Menu Page              -->
 
 
-
-<div id="MenuPage" data-url="MenuPage" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center></div>
-
-<div data-role="content" data-swatch="a">
-
-<ul data-role="listview" data-inset="true">
-<li data-icon="false"><a href="#" id="scan"><center>Make Payment</center></a></li>
-<li data-icon="false"><a href="#" id="encode"><center>Get Payment</center></a></li>
-<li data-icon="false"><a href="#WalletPage"><center>Wallet</center></a></li>
-</ul>
-</div>
-
-<div data-role="footer" data-swatch="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
-<!--
-<div id="DecodePage" data-url="DecodePage" data-role="page">
-<div data-role="header" data-swatch="a">
-<h1>Scanning...</h1>
-</div>
-
- <div  data-role="content" data-swatch="a">        
-        <p><a href="#" class="topcoat-button" id="scan">SCAN</a></p>
-        <p><a href="#" class="topcoat-button" id="encode">ENCODE</a></p>
-        <p id="info"></p>
-</div>
-
-<div data-role="footer" data-swatch="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
--->
-
-
-
-
-
-
-
-<!--                Select card Page                -->
-
-<div id="SelectPage" data-url="SelectPage" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center>
-</div>
-
-<div data-role="content" data-swatch="a">
-<h1>Select Card</h1>
-<div data-role="fieldcontain">
-<label for="sel_tw14">Please select card</label>
-<select name="sel_tw14" id="sel_tw14" data-native-menu="false">
-<option value="VISA">VISA</option><option value="MASTERCARD">MASTERCARD</option><option value="PAYPAL">PAYPAL</option></select>
-</div>
-<a id="CardId" href="#Menu" data-role="button" data-inline="true">Select</a>
-
-</div>
-
-<div data-role="footer" data-swatch="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
-
-
-
-<!--           Add Card Page        -->
-
-
-
-<div id="AddCardPage" data-url="AddCardPage" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center>
-
-</div>
-
-
-<form id="newcard" method="GET" action="">
-
-<div data-role="content" data-swatch="a">
-      <center> <img src="img/card.png" width="50px" height="50px"><center>        
-
-<h1>Card Details</h1>
-
-<div data-role="fieldcontain">
-<label for="inp_tw31">Name on card</label>
-<input type="text" name="cname" id="inp_tw31" />
-</div>
-<div data-role="fieldcontain">
-<label for="inp_tw23">Card No</label>
-<input type="text" name="cno" id="inp_tw23" value="xxxxxxxxxxxxxxxx" data-mini="true"/>
-</div>
-<div data-role="fieldcontain">
-<label for="sel_tw28">Validity(MM/YY)</label>
-<input type="text" name="val" id="inp_tw23" data-mini="true"/>
-</div>
-<div data-role="fieldcontain">
-<label for="inp_tw32">CVV</label>
-<input type="number" name="cvv" id="inp_tw32" />
-</div>
-<div>
-<center><input type="button" value="save" data-inline="true"></center>
-</div>
-</div>
-</form>
-
-<div data-role="footer" data-swatch="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
-        
-
-        <script type="text/javascript" src="cordova.js"></script>
+      
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+          <script src="../../dist/js/bootstrap.min.js"></script>
+          <script src="../../assets/js/docs.min.js"></script>
+          <script type="text/javascript" src="cordova.js"></script>
          <script type="text/javascript" src="barcodescanner.js"></script>
          <script type="text/javascript" src="childbrowser.js"></script>
          <script type="text/javascript" src="js/index.js"></script>
