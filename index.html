@@ -340,11 +340,46 @@ if(localStorage.getItem("existing")!=null)
 
 
 
-<!--         Wallet Page               -->
+
+
+
+
+
+
+
+<!--             Wallet Page              -->
 
 
 
 <div id="WalletPage" data-url="WalletPage" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center></div>
+
+<div data-role="content" data-swatch="a">
+
+<ul data-role="listview" data-inset="true">
+<li data-icon="false"><a href="#DashboardPage"><center>Dashboard</center></a></li>
+<li data-icon="false"><a href="#"><center>View Cards</center></a></li>
+<li data-icon="false"><a href="#AddCardPage"><center>Add Card</center></a></li>
+</ul>
+</div>
+
+<div data-role="footer" data-swatch="a" data-position="fixed">
+<h1>ⒸGoCent</h1>
+</div>
+</div>
+
+
+
+
+
+
+
+<!--         Dashboard Page               -->
+
+
+
+<div id="DashboardPage" data-url="DashboardPage" data-role="page">
 <div data-role="header" data-swatch="a">
 <center><img src="Logo.png" height="40px" width="120px"></center>
 </div>
@@ -378,7 +413,7 @@ if(localStorage.getItem("existing")!=null)
 
 
        <center> <img src="img/dash.png" width="50px" height="50px"><center>        
-          <center><h4 class="header">Transaction History</h4></center>
+          <center><h3 class="header">Transaction History</h3></center>
           <div class="ui-body ui-body-a ui-corner-all">
           <div class="table-responsive"> 
             <table class="table table-hover table-condensed table-hover">
@@ -530,7 +565,7 @@ if(localStorage.getItem("existing")!=null)
 
 
        <center> <img src="img/clipboard.png" width="50px" height="50px"><center>        
-          <center><h4 class="header">Inventory List</h4></center>
+          <center><h3 class="header">Inventory List</h3></center>
           <div class="ui-body ui-body-a ui-corner-all">
           <div class="table-responsive"> 
             <table class="table table-hover table-condensed table-hover">
@@ -759,7 +794,7 @@ if(localStorage.getItem("existing")!=null)
 <div data-role="content" data-swatch="a">
       <center> <img src="img/card.png" width="50px" height="50px"><center>        
 
-<h1>Card Details</h1>
+<h3>Card Details</h3>
 
 <div data-role="fieldcontain">
 <label for="inp_tw31">Name on card</label>
