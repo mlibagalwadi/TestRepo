@@ -173,17 +173,19 @@ if(localStorage.getItem("existing")!=null)
 
 		$("#Cregbutton").click(function() {
 
+			localStorage["ISMERCHANT?"] = "false";
+										
+
 		$.ajax({
 			dataType: "json",
 			type: "POST",
 			crossdomain: true,
 			url: "http://goskash.appspot.com/phollar/Registration",
-			data: {'fName': fName.value,'lName': lName.value,'email': email.value,'password': password.value},
+			data: {'fName': fName.value,'lName': lName.value,'email': email.value,'password': password.value,'isMerchant': localStorage.getItem("ISMERCHANT?")},
 			success: function(response){
 								if(response.valid=="true"){
 										alert("Great to have you on board!");
 										localStorage["existing"] = email.value;
-										localStorage["ISMERCHANT?"] = response.isMerchant;
 										window.open("#MenuPage","_self");
 								}
 								else if(response.valid=="false"){
@@ -216,9 +218,20 @@ if(localStorage.getItem("existing")!=null)
 <center><h3>Merchant Registration</h3></center>
 
 
+
+<div data-role="fieldcontain">
+<label for="inp_tw31">First Name:</label>
+
+<input type="text" id="fName" id="inp_tw31" /> 
+</div>
+<div data-role="fieldcontain">
+<label for="inp_tw23">Last Name:</label>
+<input type="text" id="lName" id="inp_tw23" data-mini="true"/>
+</div>
+
 <div data-role="fieldcontain">
 <label for="inp_tw31">Merchant Name:</label>
-<input type="text" id="merName" id="inp_tw31" /> 
+<input type="text" id="merName" id="inp_tw36" /> 
 </div>
 
 <div data-role="fieldcontain">
@@ -231,11 +244,11 @@ if(localStorage.getItem("existing")!=null)
 <input type="password" id="password2" id="inp_tw30"  data-mini="true"/>
 </div>
 
-<div data-role="fieldcontain">
+<!-- <div data-role="fieldcontain">
 <label for="inp_tw32">Currency Code:</label>
 <input type="text" id="currency2" id="inp_tw32" />
 </div> 
-
+ -->
 
 <div data-role="fieldcontain">
 <label for="inp_tw32">Stripe Key:</label>
@@ -264,12 +277,14 @@ if(localStorage.getItem("existing")!=null)
 
 		$("#Mregbutton").click(function() {
 
+			localStorage["ISMERCHANT?"]="true";
+
 		$.ajax({
 			dataType: "json",
 			type: "POST",
 			url: "http://goskash.appspot.com/phollar/Registration",
 			crossdomain: true,
-			data: {/*'fName': null,'lName': null,*/'email': email2.value,'currency': currency2.value,'password': password2.value,'merchantName': merName.value,'stripeKey': stripeKey.value},
+			data: {'fName': null,'lName': null,'email': email2.value,'password': password2.value,'merchantName': merName.value,'stripeKey': stripeKey.value,'isMerchant': localStorage.getItem("ISMERCHANT?")},
 			success: function(response){
 								if(response.valid=="true"){
 										alert("Great to have you on board!");
