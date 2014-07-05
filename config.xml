@@ -21,6 +21,10 @@
        <param name="key" value="willoughby"/>
     </feature>
 
+
+    <access origin="*" />
+
+
     <preference name="phonegap-version" value="3.1.0" />
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />

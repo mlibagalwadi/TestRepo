@@ -1,21 +1,21 @@
 <!--
 
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+		Licensed to the Apache Software Foundation (ASF) under one
+		or more contributor license agreements.  See the NOTICE file
+		distributed with this work for additional information
+		regarding copyright ownership.  The ASF licenses this file
+		to you under the Apache License, Version 2.0 (the
+		"License"); you may not use this file except in compliance
+		with the License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+		http://www.apache.org/licenses/LICENSE-2.0
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
+		Unless required by applicable law or agreed to in writing,
+		software distributed under the License is distributed on an
+		"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+		 KIND, either express or implied.  See the License for the
+		specific language governing permissions and limitations
+		under the License.
 
 -->
 <!DOCTYPE html>
@@ -28,26 +28,32 @@
 <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
  <link rel="stylesheet" href="jquery.mobile-1.1.0.custom.css?" />
  -->    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="format-detection" content="telephone=no" />
-   <!--     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+				<meta name="format-detection" content="telephone=no" />
+	 <!--     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
+				<link rel="stylesheet" type="text/css" href="css/index.css" />
 <link rel="stylesheet" href="themes/PhollarPay.min.css" />
 <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.structure-1.4.2.min.css" />
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="dashboard.css" rel="stylesheet">
+
+
+<link href="css/bootstrap.min.css" rel="stylesheet"> 
+
+
+<link href="dashboard.css" rel="stylesheet">			 
 
 <script>
 
+
+
 if(localStorage.getItem("existing")!=null)
 {
-   window.open("#MenuPage","_self");
+	 window.open("#MenuPage","_self");
 }
  else
  {
-    window.open("#Welcome","_self");
+		window.open("#Welcome","_self");
 }
 
 </script>
@@ -87,20 +93,20 @@ if(localStorage.getItem("existing")!=null)
 </div>
 
 <!-- <div id="dialog-confirm">
-  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Do you want to register as a Merchant?</p>
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Do you want to register as a Merchant?</p>
 </div>
  
  -->
  <script type="text/javascript">
  function IsMerch()
  {
-    var answer = confirm("Register as a merchant?")
-    if (answer){
-           window.open("#MerReg","_self");
-    }
-    else{
-             window.open("#CusReg","_self");
-    }
+		var answer = confirm("Register as a merchant?")
+		if (answer){
+					 window.open("#MerReg","_self");
+		}
+		else{
+						 window.open("#CusReg","_self");
+		}
 
 
 
@@ -152,7 +158,7 @@ if(localStorage.getItem("existing")!=null)
 </div>
 </form>
 
-<div data-role="footer" data-theme="a" data-position="fixed">
+<div data-role="footer" data-theme="a" data-position="fixed" data-tap-toggle="false">
 <h1>ⒸGoCent</h1>
 
 </div>
@@ -163,30 +169,33 @@ if(localStorage.getItem("existing")!=null)
 
 
 
-    <script>
+		<script>
 
-    $("#Cregbutton").click(function() {
+		$("#Cregbutton").click(function() {
 
-    $.ajax({
-      dataType: "jsonp",
-      url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Registration",
-      data: {'fName': fName.value,'lName': lName.value,'email': email.value,'password': password.value},
-      success: function(response){
-                if(response.valid=="true"){
-                    alert("Great to have you on board!");
-                    localStorage["existing"] = email.value;
-                    window.open("#MenuPage","_self");
-                }
-                else if(response.valid=="false"){
-                    alert("User already exists!");
-                }
-            }
-    });
+		$.ajax({
+			dataType: "json",
+			type: "POST",
+			crossdomain: true,
+			url: "http://goskash.appspot.com/phollar/Registration",
+			data: {'fName': fName.value,'lName': lName.value,'email': email.value,'password': password.value},
+			success: function(response){
+								if(response.valid=="true"){
+										alert("Great to have you on board!");
+										localStorage["existing"] = email.value;
+										localStorage["ISMERCHANT?"] = response.isMerchant;
+										window.open("#MenuPage","_self");
+								}
+								else if(response.valid=="false"){
+										alert("User already exists!");
+								}
+						}
+		});
 
-    });
+		});
 
 
-    </script>
+		</script>
 
 
 
@@ -240,7 +249,7 @@ if(localStorage.getItem("existing")!=null)
 </div>
 </form>
 
-<div data-role="footer" data-theme="a" data-position="fixed">
+<div data-role="footer" data-theme="a" data-position="fixed" data-tap-toggle="false">
 <h1>ⒸGoCent</h1>
 
 </div>
@@ -251,30 +260,33 @@ if(localStorage.getItem("existing")!=null)
 
 
 
-    <script>
+		<script>
 
-    $("#Mregbutton").click(function() {
+		$("#Mregbutton").click(function() {
 
-    $.ajax({
-      dataType: "jsonp",
-      url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Registration",
-      data: {/*'fName': null,'lName': null,*/'email': email2.value,'currency': currency2.value,'password': password2.value,'merchantName': merName.value,'stripeKey': stripeKey.value},
-      success: function(response){
-                if(response.valid=="true"){
-                    alert("Great to have you on board!");
-                    localStorage["existing"] = email2.value;
-                    window.open("#MenuPage","_self");
-                }
-                else if(response.valid=="false"){
-                    alert("User already exists!");
-                }
-            }
-    });
+		$.ajax({
+			dataType: "json",
+			type: "POST",
+			url: "http://goskash.appspot.com/phollar/Registration",
+			crossdomain: true,
+			data: {/*'fName': null,'lName': null,*/'email': email2.value,'currency': currency2.value,'password': password2.value,'merchantName': merName.value,'stripeKey': stripeKey.value},
+			success: function(response){
+								if(response.valid=="true"){
+										alert("Great to have you on board!");
+										localStorage["existing"] = email2.value;
+										localStorage["ISMERCHANT?"]=response.isMerchant;
+										window.open("#MenuPage","_self");
+								}
+								else if(response.valid=="false"){
+										alert("User already exists!");
+								}
+						}
+		});
 
-    });
+		});
 
 
-    </script>
+		</script>
 
 
 
@@ -309,35 +321,92 @@ if(localStorage.getItem("existing")!=null)
 
 </form>
 
-<div data-role="footer" data-swatch="a" data-position="fixed">
+<div data-role="footer" data-swatch="a" data-position="fixed" data-tap-toggle="false">
 <h1>ⒸGoCent</h1>
 </div>
 </div>
 
-    <script>
-
-    $("#loginbutton").click(function() {
-
-    $.ajax({
-      dataType: "jsonp",
-      url: "http://1-dot-anuragbagalwadisample.appspot.com/phollar/Login",
-      data: {'email': email1.value,'password': password1.value},
-        success: function(response){
-            if(response.valid=="true"){
-                localStorage["existing"] = email1.value;
-                window.open("#MenuPage","_self");
-            }
-            else if(response.valid=="false"){
-                alert("Invalid user!");
-            }
-        }
-    });
-
-    });
-    </script>
+		<script>
 
 
 
+// 		$("#loginbutton").click(function(){
+//   $.post("http://1-dot-anuragbagalwadisample.appspot.com/phollar/Login",
+//   {'email': email1.value,'password': password1.value},
+
+//   function(response){
+//     alert(response);
+  
+//   });
+// });
+
+
+		$("#loginbutton").click(function() {
+
+		$.ajax({	
+			dataType: "json",
+			type: "POST",
+			crossdomain: true,
+			url: "http://goskash.appspot.com/phollar/Login",
+			data: {'email': email1.value,'password': password1.value},
+				success: function(response){
+
+
+						if(response.valid=="true"){
+
+								var d=new Date();
+
+								var ts=d.getTime();
+								// var token = {email : response.id, timestamp : ts};
+
+								// var str = JSON.stringify(token);
+
+								localStorage["id"] = response.id;
+								localStorage["ts"] = ts;								
+								localStorage["existing"] = email1.value;
+								localStorage["ISMERCHANT?"] = response.isMerchant;
+						 // document.write(ciphertext);
+
+								window.open("#MenuPage","_self");
+						}
+						else if(response.valid=="false"){
+								alert("Invalid user!");
+						}
+				},
+								error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+                }
+
+		});
+		});
+
+
+		</script>
+
+
+
+
+
+<!--          Customer Wallet Page              -->
+
+
+
+<div id="CustWalletPage" data-url="CustWalletPage" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center></div>
+
+<div data-role="content" data-swatch="a">
+
+<ul data-role="listview" data-inset="true">
+<li data-icon="false"><a href="#"><center>View Cards</center></a></li>
+<li data-icon="false"><a href="#AddCardPage"><center>Add Card</center></a></li>
+</ul>
+</div>
+
+<div data-role="footer" data-swatch="a" data-position="fixed" data-tap-toggle="false">
+<h1>ⒸGoCent</h1>
+</div>
+</div>
 
 
 
@@ -347,11 +416,13 @@ if(localStorage.getItem("existing")!=null)
 
 
 
-<!--             Wallet Page              -->
+
+
+<!--          Merchant Wallet Page              -->
 
 
 
-<div id="WalletPage" data-url="WalletPage" data-role="page">
+<div id="MerchWalletPage" data-url="MerchWalletPage" data-role="page">
 <div data-role="header" data-swatch="a">
 <center><img src="Logo.png" height="40px" width="120px"></center></div>
 
@@ -364,7 +435,7 @@ if(localStorage.getItem("existing")!=null)
 </ul>
 </div>
 
-<div data-role="footer" data-swatch="a" data-position="fixed">
+<div data-role="footer" data-swatch="a"  data-position="fixed" data-tap-toggle="false">
 <h1>ⒸGoCent</h1>
 </div>
 </div>
@@ -385,8 +456,8 @@ if(localStorage.getItem("existing")!=null)
 </div>
 
 <div data-role="content" data-swatch="a">
-    
-    <ul data-role="listview" data-inset="true">
+		
+		<ul data-role="listview" data-inset="true">
 <li data-icon="false"><a href="#History"><center>Transaction History</center></a></li>
 <li data-icon="false"><a href="#Inventory"><center>Inventory List</center></a></li>
 <li data-icon="false"><a href="#"><center>Merchant Profile</center></a></li>
@@ -394,10 +465,72 @@ if(localStorage.getItem("existing")!=null)
 
 </div>
 
-<div data-role="footer" data-theme="a" data-position="fixed">
+<div data-role="footer" data-theme="a" data-position="fixed" data-tap-toggle="false">
 <h1>ⒸGoCent</h1>
 </div>
 </div>
+
+
+ 
+
+
+<!--             Menu Page              -->
+
+
+
+<div id="MenuPage" data-url="MenuPage" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center></div>
+
+<div data-role="content" data-swatch="a">
+
+<ul data-role="listview" data-inset="true">
+<li data-icon="false"><a href="#" id="scan"><center>Make Payment</center></a></li>
+<li data-icon="false"><a href="#" id="encode"><center>Get Payment</center></a></li>
+<li data-icon="false"><a href="" onclick="checkIfMerch()"><center>Wallet</center></a></li>
+</ul>
+</div>
+
+<script type="text/javascript">
+	function checkIfMerch()
+	{
+		if(localStorage.getItem("ISMERCHANT?")=="true")
+		{
+			window.open("#MerchWalletPage","_self");
+		}
+		else
+		{
+			window.open("#CustWalletPage","_self");
+		}
+	}
+</script>
+
+
+<div data-role="footer" data-swatch="a" data-position="fixed" data-tap-toggle="false">
+<h1>ⒸGoCent</h1>
+</div>
+</div>
+
+<!--
+<div id="DecodePage" data-url="DecodePage" data-role="page">
+<div data-role="header" data-swatch="a">
+<h1>Scanning...</h1>
+</div>
+
+ <div  data-role="content" data-swatch="a">        
+				<p><a href="#" class="topcoat-button" id="scan">SCAN</a></p>
+				<p><a href="#" class="topcoat-button" id="encode">ENCODE</a></p>
+				<p id="info"></p>
+</div>
+
+<div data-role="footer" data-swatch="a" data-position="fixed">
+<h1>ⒸGoCent</h1>
+</div>
+</div>
+
+-->
+
+
 
 
 
@@ -412,141 +545,142 @@ if(localStorage.getItem("existing")!=null)
 <div data-role="content" data-swatch="a">
 
 
-       <center> <img src="img/dash.png" width="50px" height="50px"><center>        
-          <center><h3 class="header">Transaction History</h3></center>
-          <div class="ui-body ui-body-a ui-corner-all">
-          <div class="table-responsive"> 
-            <table class="table table-hover table-condensed table-hover">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Transaction ID</th>
-                  <th>Customer ID</th>
-                  <th>Amount</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          </div> 
+			 <center> <img src="img/dash.png" width="50px" height="50px"><center>        
+					<center><h3 class="header">Transaction History</h3></center>
+					<center><h6>(last 30 days)</h3></center>
+					<div class="ui-body ui-body-a ui-corner-all">
+					<div class="table-responsive"> 
+						<table class="table table-hover table-condensed table-hover">
+							<thead>
+								<tr>
+									<th>Date</th>
+									<th>Transaction ID</th>
+									<th>Customer ID</th>
+									<th>Amount</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1,001</td>
+									<td>Lorem</td>
+									<td>ipsum</td>
+									<td>dolor</td>
+									<td>sit</td>
+								</tr>
+								<tr>
+									<td>1,002</td>
+									<td>amet</td>
+									<td>consectetur</td>
+									<td>adipiscing</td>
+									<td>elit</td>
+								</tr>
+								<tr>
+									<td>1,003</td>
+									<td>Integer</td>
+									<td>nec</td>
+									<td>odio</td>
+									<td>Praesent</td>
+								</tr>
+								<tr>
+									<td>1,003</td>
+									<td>libero</td>
+									<td>Sed</td>
+									<td>cursus</td>
+									<td>ante</td>
+								</tr>
+								<tr>
+									<td>1,004</td>
+									<td>dapibus</td>
+									<td>diam</td>
+									<td>Sed</td>
+									<td>nisi</td>
+								</tr>
+								<tr>
+									<td>1,005</td>
+									<td>Nulla</td>
+									<td>quis</td>
+									<td>sem</td>
+									<td>at</td>
+								</tr>
+								<tr>
+									<td>1,006</td>
+									<td>nibh</td>
+									<td>elementum</td>
+									<td>imperdiet</td>
+									<td>Duis</td>
+								</tr>
+								<tr>
+									<td>1,007</td>
+									<td>sagittis</td>
+									<td>ipsum</td>
+									<td>Praesent</td>
+									<td>mauris</td>
+								</tr>
+								<tr>
+									<td>1,008</td>
+									<td>Fusce</td>
+									<td>nec</td>
+									<td>tellus</td>
+									<td>sed</td>
+								</tr>
+								<tr>
+									<td>1,009</td>
+									<td>augue</td>
+									<td>semper</td>
+									<td>porta</td>
+									<td>Mauris</td>
+								</tr>
+								<tr>
+									<td>1,010</td>
+									<td>massa</td>
+									<td>Vestibulum</td>
+									<td>lacinia</td>
+									<td>arcu</td>
+								</tr>
+								<tr>
+									<td>1,011</td>
+									<td>eget</td>
+									<td>nulla</td>
+									<td>Class</td>
+									<td>aptent</td>
+								</tr>
+								<tr>
+									<td>1,012</td>
+									<td>taciti</td>
+									<td>sociosqu</td>
+									<td>ad</td>
+									<td>litora</td>
+								</tr>
+								<tr>
+									<td>1,013</td>
+									<td>torquent</td>
+									<td>per</td>
+									<td>conubia</td>
+									<td>nostra</td>
+								</tr>
+								<tr>
+									<td>1,014</td>
+									<td>per</td>
+									<td>inceptos</td>
+									<td>himenaeos</td>
+									<td>Curabitur</td>
+								</tr>
+								<tr>
+									<td>1,015</td>
+									<td>sodales</td>
+									<td>ligula</td>
+									<td>in</td>
+									<td>libero</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					</div> 
 
 </div>
 
-<div data-role="footer" data-theme="a" data-position="fixed">
+<div data-role="footer" data-theme="a" data-position="fixed" data-tap-toggle="false">
 <h1>ⒸGoCent</h1>
 </div>
 </div>
@@ -564,216 +698,226 @@ if(localStorage.getItem("existing")!=null)
 <div data-role="content" data-swatch="a">
 
 
-       <center> <img src="img/clipboard.png" width="50px" height="50px"><center>        
-          <center><h3 class="header">Inventory List</h3></center>
-          <div class="ui-body ui-body-a ui-corner-all">
-          <div class="table-responsive"> 
-            <table class="table table-hover table-condensed table-hover">
-              <thead>
-                <tr>
-                  <th>Product ID</th>
-                  <th>Name</th>
-                  <th>Amount</th>
-                  <th>Category</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          </div> 
+			 <center> <img src="img/clipboard.png" width="50px" height="50px"><center>        
+					<center><h3 class="header">Inventory List</h3></center>
+					<div class="ui-body ui-body-a ui-corner-all">
+					<div class="table-responsive"> 
+						<table class="table table-hover table-condensed table-hover">
+							<thead>
+								<tr>
+									<th>Product ID</th>
+									<th>Name</th>
+									<th>Amount</th>
+									<th>Category</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1,001</td>
+									<td>Lorem</td>
+									<td>ipsum</td>
+									<td>dolor</td>
+									<td>sit</td>
+								</tr>
+								<tr>
+									<td>1,002</td>
+									<td>amet</td>
+									<td>consectetur</td>
+									<td>adipiscing</td>
+									<td>elit</td>
+								</tr>
+								<tr>
+									<td>1,003</td>
+									<td>Integer</td>
+									<td>nec</td>
+									<td>odio</td>
+									<td>Praesent</td>
+								</tr>
+								<tr>
+									<td>1,003</td>
+									<td>libero</td>
+									<td>Sed</td>
+									<td>cursus</td>
+									<td>ante</td>
+								</tr>
+								<tr>
+									<td>1,004</td>
+									<td>dapibus</td>
+									<td>diam</td>
+									<td>Sed</td>
+									<td>nisi</td>
+								</tr>
+								<tr>
+									<td>1,005</td>
+									<td>Nulla</td>
+									<td>quis</td>
+									<td>sem</td>
+									<td>at</td>
+								</tr>
+								<tr>
+									<td>1,006</td>
+									<td>nibh</td>
+									<td>elementum</td>
+									<td>imperdiet</td>
+									<td>Duis</td>
+								</tr>
+								<tr>
+									<td>1,007</td>
+									<td>sagittis</td>
+									<td>ipsum</td>
+									<td>Praesent</td>
+									<td>mauris</td>
+								</tr>
+								<tr>
+									<td>1,008</td>
+									<td>Fusce</td>
+									<td>nec</td>
+									<td>tellus</td>
+									<td>sed</td>
+								</tr>
+								<tr>
+									<td>1,009</td>
+									<td>augue</td>
+									<td>semper</td>
+									<td>porta</td>
+									<td>Mauris</td>
+								</tr>
+								<tr>
+									<td>1,010</td>
+									<td>massa</td>
+									<td>Vestibulum</td>
+									<td>lacinia</td>
+									<td>arcu</td>
+								</tr>
+								<tr>
+									<td>1,011</td>
+									<td>eget</td>
+									<td>nulla</td>
+									<td>Class</td>
+									<td>aptent</td>
+								</tr>
+								<tr>
+									<td>1,012</td>
+									<td>taciti</td>
+									<td>sociosqu</td>
+									<td>ad</td>
+									<td>litora</td>
+								</tr>
+								<tr>
+									<td>1,013</td>
+									<td>torquent</td>
+									<td>per</td>
+									<td>conubia</td>
+									<td>nostra</td>
+								</tr>
+								<tr>
+									<td>1,014</td>
+									<td>per</td>
+									<td>inceptos</td>
+									<td>himenaeos</td>
+									<td>Curabitur</td>
+								</tr>
+								<tr>
+									<td>1,015</td>
+									<td>sodales</td>
+									<td>ligula</td>
+									<td>in</td>
+									<td>libero</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					</div> 
 
 </div>
 
-<div data-role="footer" data-theme="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
- 
-
-
-<!--             Menu Page              -->
-
-
-
-<div id="MenuPage" data-url="MenuPage" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center></div>
-
-<div data-role="content" data-swatch="a">
-
-<ul data-role="listview" data-inset="true">
-<li data-icon="false"><a href="#" id="scan"><center>Make Payment</center></a></li>
-<li data-icon="false"><a href="#" id="encode"><center>Get Payment</center></a></li>
-<li data-icon="false"><a href="#WalletPage"><center>Wallet</center></a></li>
-</ul>
-</div>
-
-<div data-role="footer" data-swatch="a" data-position="fixed">
+<div data-role="footer" data-theme="a" data-position="fixed" data-tap-toggle="false">
 <h1>ⒸGoCent</h1>
 </div>
 </div>
 
-<!--
-<div id="DecodePage" data-url="DecodePage" data-role="page">
-<div data-role="header" data-swatch="a">
-<h1>Scanning...</h1>
-</div>
-
- <div  data-role="content" data-swatch="a">        
-        <p><a href="#" class="topcoat-button" id="scan">SCAN</a></p>
-        <p><a href="#" class="topcoat-button" id="encode">ENCODE</a></p>
-        <p id="info"></p>
-</div>
-
-<div data-role="footer" data-swatch="a" data-position="fixed">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
--->
 
 
+<script>
+
+if(JSON.parse(localStorage.getItem("allcards"))!=null)
+{
+var cards=[];
+cards=JSON.parse(localStorage.getItem("allcards"));
+var cardNumber=JSON.stringify(cards[0].cardNo);
 
 
+}
+
+</script>
 
 
 
 <!--                Select card Page                -->
 
-<div id="SelectPage" data-url="SelectPage" data-role="page">
+<div id="SelectCard" data-url="SelectCard" data-role="page">
 <div data-role="header" data-swatch="a">
 <center><img src="Logo.png" height="40px" width="120px"></center>
 </div>
 
 <div data-role="content" data-swatch="a">
+
 <h1>Select Card</h1>
 <div data-role="fieldcontain">
-<label for="sel_tw14">Please select card</label>
-<select name="sel_tw14" id="sel_tw14" data-native-menu="false">
-<option value="VISA">VISA</option><option value="MASTERCARD">MASTERCARD</option><option value="PAYPAL">PAYPAL</option></select>
+<center><input type="button" id="0" value="card0" class="card" data-inline="true"></center>
+<center><input type="button" id="1" value="card1" class="card" data-inline="true"></center>
 </div>
-<a id="CardId" href="#Menu" data-role="button" data-inline="true">Select</a>
-
 </div>
 
-<div data-role="footer" data-swatch="a" data-position="fixed">
+<div data-role="footer" data-swatch="a" data-position="fixed" data-tap-toggle="false">
 <h1>ⒸGoCent</h1>
 </div>
 </div>
+
+<script>
+
+$('.card').click(function() {
+
+
+	var selectedCard = $(this).attr('id');
+	var cards=[];
+	cards=JSON.parse(localStorage.getItem("allcards"));
+
+		//alert(JSON.stringify(cards[0]));
+
+		$.ajax({	
+			dataType: "json",
+			type: "POST",
+			crossdomain: true,
+			url: "http://goskash.appspot.com/phollar/PayAPI",
+			data: {'userId': localStorage.getItem("id"),'productId': localStorage.getItem("productId"),'cardNo': cards[parseInt(selectedCard)].cardNo, 'cardExp':cards[parseInt(selectedCard)].exp, 'cvv': cards[parseInt(selectedCard)].cvv},
+				success: function(response){
+
+
+						if(response.valid=="true"){
+
+							alert("Succesful Payment!");
+
+								window.open("#MenuPage","_self");
+						}
+						else if(response.valid=="false"){
+								alert("Payment Failed!");
+						}
+				},
+								error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+                }
+
+		});
+
+	});
+
+
+
+	 $('button').on('click', LoadDetails(a,b,c));
+
+</script>
 
 
 
@@ -788,50 +932,121 @@ if(localStorage.getItem("existing")!=null)
 
 </div>
 
-
-<form id="newcard" method="GET" action="">
+<form id="newcard">
 
 <div data-role="content" data-swatch="a">
-      <center> <img src="img/card.png" width="50px" height="50px"><center>        
+			<center> <img src="img/card.png" width="50px" height="50px"><center>        
 
 <h3>Card Details</h3>
 
+
+
 <div data-role="fieldcontain">
 <label for="inp_tw31">Name on card</label>
-<input type="text" name="cname" id="inp_tw31" />
+<input type="text" id="cardname"/>
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw23">Card No</label>
-<input type="text" name="cno" id="inp_tw23" value="xxxxxxxxxxxxxxxx" data-mini="true"/>
+<input type="text" id="cno" value="xxxxxxxxxxxxxxxx" data-mini="true"/>
 </div>
 <div data-role="fieldcontain">
 <label for="sel_tw28">Validity(MM/YY)</label>
-<input type="text" name="val" id="inp_tw23" data-mini="true"/>
+<input type="text" id="val" data-mini="true"/>
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw32">CVV</label>
-<input type="number" name="cvv" id="inp_tw32" />
+<input type="text" id="cvv"/>
 </div>
 <div>
-<center><input type="button" value="save" data-inline="true"></center>
+<center><input type="button" value="save" id="addcardbutton" data-inline="true"></center>
 </div>
 </div>
 </form>
 
-<div data-role="footer" data-swatch="a" data-position="fixed">
+<div data-role="footer" data-swatch="a" data-position="fixed" data-tap-toggle="false">
 <h1>ⒸGoCent</h1>
 </div>
 </div>
 
-        
 
-        <script type="text/javascript" src="cordova.js"></script>
-         <script type="text/javascript" src="barcodescanner.js"></script>
-         <script type="text/javascript" src="childbrowser.js"></script>
-         <script type="text/javascript" src="js/index.js"></script>
-         <script type="text/javascript">
-            app.initialize();
-        </script>
+
+		<script>
+
+
+	$("#addcardbutton").click(function() {
+
+		var card={};
+
+		card.nameOnCard=cardname.value;
+
+		card.cardNo=cno.value;
+
+		card.exp=val.value;
+
+		card.cvv=cvv.value;
+
+		var allcardsString = localStorage.getItem("allcards");
+		var allcards=[];
+
+		if(allcardsString!=null) {
+			
+			allcards = JSON.parse(allcardsString);
+		}
+
+		allcards[allcards.length] = card;
+
+		localStorage["allcards"] = JSON.stringify(allcards);
+
+		//console.log(localStorage.getItem("allcards"));
+
+
+			// $.ajax({
+			//   type: "POST",
+			//   url:  "http://1-dot-anuragbagalwadisample.appspot.com/phollar/AddCard",
+			//   crossdomain: true,
+			//   data: {'id' : localStorage.getItem("id"), 'cardNo' : cno.value, 'exp' : val.value, 'cvv' : cvv.value},
+			//   success: function(response){
+
+
+		 // 				if(response.valid=="true"){
+
+
+		 // 					document.write(JSON.stringify(response));
+
+
+		 // 				}
+		 // 				else if(response.valid=="false"){
+		 // 						alert("Invalid user!");
+		 // 				}
+		 // 		},
+		 // 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
+   //                   alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+   //               },
+			//   dataType: "json"
+			// });
+
+
+
+
+		});
+
+		
+		</script>
+
+
+
+
+
+
+
+				
+				 <script type="text/javascript" src="cordova.js"></script>
+				 <script type="text/javascript" src="barcodescanner.js"></script>
+				 <script type="text/javascript" src="childbrowser.js"></script>
+				 <script type="text/javascript" src="js/index.js"></script>
+				 <script type="text/javascript">
+						app.initialize();
+				</script>
 
 </body>
 </html>

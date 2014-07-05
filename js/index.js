@@ -58,91 +58,46 @@ var app = {
 
         scanner.scan( function (result) { 
 
-            alert("We got a barcode\n" + 
-            "Result: " + result.text + "\n" + 
-            "Format: " + result.format + "\n" + 
-            "Cancelled: " + result.cancelled);  
+
+
+          localStorage["productId"]=result.productId;
+          $.ajax({  
+            dataType: "json",
+            type: "GET",
+            crossdomain: true,
+            url: "http://goskash.appspot.com/phollar/GetProductDetails",
+            data: {'productId': result.productId},
+              success: function(response){
+
+
+            alert("Product Name: "+response.productName+"\n"+
+              "Product Description: "+response.productDesc+"\n"+
+              "Amount: "+response.amount+"\n"+
+              "Currency Code: "+response.currencyCode+"\n"+
+              "Merchant Name: "+result.merchantName+"\n");
+
+            }
+
+            });
+
+
+          window.open("#SelectCard","_self");
+
+
+          
+
+
+           //  alert("We got a barcode\n" + 
+           //  "Result: " + result.text + "\n" + 
+           //  "Format: " + result.format + "\n" + 
+           //  "Cancelled: " + result.cancelled);  
         
-           console.log("Scanner result: \n" +
-                "text: " + result.text + "\n" +
-                "format: " + result.format + "\n" +
-                "cancelled: " + result.cancelled + "\n");
-            document.getElementById("info").innerHTML = result.text;
-            console.log(result);
-
-
-
-
-
-
-
-         //       
-
-         /*
-         var httpRequest;
-
-         document.getElementById("info").onclick=function() {
-        var ResultText=result.text;
-        makeRequest("http://1-dot-anuragbagalwadisample.appspot.com/payment/details",ResultText);
-         };
-
-
-        function makeRequest(url,ResultText) {
-            if (window.XMLHttpRequest) { // Mozilla, Safari, ...
-              httpRequest = new XMLHttpRequest();
-            } else if (window.ActiveXObject) { // IE
-              try {
-                httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
-              } 
-              catch (e) {
-                try {
-                  httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-                } 
-                catch (e) {}
-              }
-            }
-
-            if (!httpRequest) {
-              alert('Giving up :( Cannot create an XMLHTTP instance');
-              return false;
-            }
-            httpRequest.onreadystatechange = alertContents;
-            httpRequest.open('POST', url);
-            httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            httpRequest.send('Result='+encodeURIComponent(ResultText));
-          }
-
-        function alertContents(httpRequest) {
-          try {
-            if (httpRequest.readyState === 4) {
-              if (httpRequest.status === 200) {
-               var response = JSON.parse(httpRequest.responseText);
-                alert(response.computedString);
-              } else {
-                alert('There was a problem with the request.');
-              }
-            }
-          }
-          catch( e ) {
-            alert('Caught Exception: ' + e.description);
-          }
-        }
-
-
-
-        }
-
-
-
-
-
-*/
-
-         //
-
-
-
-
+           // console.log("Scanner result: \n" +
+           //      "text: " + result.text + "\n" +
+           //      "format: " + result.format + "\n" +
+           //      "cancelled: " + result.cancelled + "\n");
+           //  document.getElementById("info").innerHTML = result.text;
+           //  console.log(result);
 
 
 
