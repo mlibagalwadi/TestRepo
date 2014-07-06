@@ -60,6 +60,10 @@ var app = {
 
         //   var res=JSON.parse(result);
 
+        var something = eval('(' + result.text + ')');
+
+        alert(something.transactionId);
+
         //  localStorage["transactionId"]=JSON.parse(result.text).transactionId;
          
            
