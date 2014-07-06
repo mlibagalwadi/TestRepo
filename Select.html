@@ -44,10 +44,15 @@
 <div class="cardlist">
 
 <h1>Select Card</h1>
-
+<style>
+	#visaicon .ui-icon-custom {
+	background-image: url("visa.jpeg");
+	background-position: 2px 2px;
+	background-size: 90%; }
+</style>
 <ul data-role="listview" data-inset="true">
-<li data-icon="false" ><a id="0" class="card"><center>VISA</center></a></li>
-<li data-icon="false"><a id="1" class="card"><center>MASTERCARD</center></a></li>
+<li custom-icon=visaicon><a id="0" class="card"><center>VISA</center></a></li>
+<li data-icon="mastericon"><a id="1" class="card"><center>MASTERCARD</center></a></li>
 <li data-icon="false"><a id="2" class="card"><center>AMERICAN EXPRESS</center></a></li>
 
 <!-- <center><input type="button" id="0" value="card0" class="card" data-inline="true"></center>

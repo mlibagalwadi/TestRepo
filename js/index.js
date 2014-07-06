@@ -56,65 +56,18 @@ var app = {
         
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
-        scanner.scan( function (result) { 
+        scanner.scan(function (result) { 
 
            var res=JSON.parse(result);
 
           localStorage["transactionId"]=result.transactionId;
          
-
-
-              alert("Amount: "+res.amount+"\n"+
+              document.write("Amount: "+res.amount+"\n"+
                "Currency Code: "+res.currencyCode+"\n"+
                "Merchant Name: "+res.merchantName+"\n");
 
 
-
-
-          // $.ajax({  
-          //   dataType: "json",
-          //   type: "GET",
-          //   crossdomain: true,
-          //   beforeSend: function (request) {
-          //    request.setRequestHeader("token", localStorage.getItem("id"));
-          //   },
-          //   url: "http://goskash.appspot.com/phollar/GetTransactionDetails",
-          //   data: {'TransactionId': result.TransactionId},
-          //     success: function(response){
-
-
-          //   alert("Product Name: "+response.+"\n"+
-          //     "Product Description: "+response.productDesc+"\n"+
-          //     "Amount: "+response.amount+"\n"+
-          //     "Currency Code: "+response.currencyCode+"\n"+
-          //     "Merchant Name: "+result.merchantName+"\n");
-
-          //   }
-
-          //   });
-
-
           window.open("Select.html","_self");
-
-
-          
-
-
-           //  alert("We got a barcode\n" + 
-           //  "Result: " + result.text + "\n" + 
-           //  "Format: " + result.format + "\n" + 
-           //  "Cancelled: " + result.cancelled);  
-        
-           // console.log("Scanner result: \n" +
-           //      "text: " + result.text + "\n" +
-           //      "format: " + result.format + "\n" +
-           //      "cancelled: " + result.cancelled + "\n");
-           //  document.getElementById("info").innerHTML = result.text;
-           //  console.log(result);
-
-
-
-
 
             /*
             if (args.format == "QR_CODE") {
