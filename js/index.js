@@ -60,7 +60,8 @@ var app = {
 
         //   var res=JSON.parse(result);
 
-          localStorage["transactionId"]=JSON.parse(result.text).transactionId;
+          var x=result.text;
+          localStorage["transactionId"]=JSON.parse(x).transactionId;
          
            
 
