@@ -60,14 +60,14 @@ var app = {
 
         //   var res=JSON.parse(result);
 
-          localStorage["transactionId"]=result.text.transactionId;
+          localStorage["transactionId"]=JSON.parse(result.text).transactionId;
          
            
 
         //  alert("Transaction ID: "+result.+"\n"+"Amount: "+result.amount+"\nMerchant Name: "+result.merchantName);  
 
 
-        alert(result.text.transactionId);
+        alert(JSON.parse(result.text).transactionId);
 
 
           window.open("Select.html","_self");
