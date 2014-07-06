@@ -67,7 +67,7 @@ var app = {
         //  alert("Transaction ID: "+result.+"\n"+"Amount: "+result.amount+"\nMerchant Name: "+result.merchantName);  
 
 
-        alert(JSON.stringify(result));
+        alert(result.text);
 
 
           window.open("Select.html","_self");
