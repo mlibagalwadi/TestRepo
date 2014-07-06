@@ -47,12 +47,13 @@
 
 
 
+
 if(localStorage.getItem("existing")!=null)
 {
 	 window.open("#MenuPage","_self");
 }
- else
- {
+else
+{
 		window.open("#Welcome","_self");
 }
 
@@ -138,19 +139,19 @@ if(localStorage.getItem("existing")!=null)
 <div data-role="fieldcontain">
 <label for="inp_tw31">First Name:</label>
 
-<input type="text" id="fName" id="inp_tw31" /> 
+<input type="text" id="fName"> 
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw23">Last Name:</label>
-<input type="text" id="lName" id="inp_tw23" data-mini="true"/>
+<input type="text" id="lName" data-mini="true">
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw23">Email:</label>
-<input type="text" id="email" id="inp_tw23">
+<input type="text" id="email">
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw30">Password:</label>
-<input type="password" id="password" id="inp_tw30"  data-mini="true"/>
+<input type="password" id="password" data-mini="true"/>
 </div>
 <div>
 <center><input type="button" id="Cregbutton" value="Register!" data-inline="true"></center>
@@ -169,6 +170,7 @@ if(localStorage.getItem("existing")!=null)
 
 
 
+
 		<script>
 
 		$("#Cregbutton").click(function() {
@@ -180,7 +182,7 @@ if(localStorage.getItem("existing")!=null)
 			dataType: "json",
 			type: "POST",
 			crossdomain: true,
-			url: "http://goskash.appspot.com/phollar/Registration",
+			url: "http://goskash.appspot.com/Registration",
 			data: {'fName': fName.value,'lName': lName.value,'email': email.value,'password': password.value,'isMerchant': localStorage.getItem("ISMERCHANT?")},
 			success: function(response){
 								if(response.valid=="true"){
@@ -189,7 +191,7 @@ if(localStorage.getItem("existing")!=null)
 										window.open("#MenuPage","_self");
 								}
 								else if(response.valid=="false"){
-										alert("User already exists!");
+										alert(response.error);
 								}
 						}
 		});
@@ -222,11 +224,11 @@ if(localStorage.getItem("existing")!=null)
 <div data-role="fieldcontain">
 <label for="inp_tw31">First Name:</label>
 
-<input type="text" id="fName" id="inp_tw31" /> 
+<input type="text" id="fName2" id="inp_tw31" /> 
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw23">Last Name:</label>
-<input type="text" id="lName" id="inp_tw23" data-mini="true"/>
+<input type="text" id="lName2" id="inp_tw23" data-mini="true"/>
 </div>
 
 <div data-role="fieldcontain">
@@ -282,9 +284,9 @@ if(localStorage.getItem("existing")!=null)
 		$.ajax({
 			dataType: "json",
 			type: "POST",
-			url: "http://goskash.appspot.com/phollar/Registration",
+			url: "http://goskash.appspot.com/Registration",
 			crossdomain: true,
-			data: {'fName': null,'lName': null,'email': email2.value,'password': password2.value,'merchantName': merName.value,'stripeKey': stripeKey.value,'isMerchant': localStorage.getItem("ISMERCHANT?")},
+			data: {'fName': fName2.value,'lName': lName2.value,'email': email2.value,'password': password2.value,'merchantName': merName.value,'stripeKey': stripeKey.value,'isMerchant': localStorage.getItem("ISMERCHANT?")},
 			success: function(response){
 								if(response.valid=="true"){
 										alert("Great to have you on board!");
@@ -293,7 +295,7 @@ if(localStorage.getItem("existing")!=null)
 										window.open("#MenuPage","_self");
 								}
 								else if(response.valid=="false"){
-										alert("User already exists!");
+										alert(response.error);
 								}
 						}
 		});
@@ -316,25 +318,25 @@ if(localStorage.getItem("existing")!=null)
 <center><img src="Logo.png" height="40px" width="120px"></center>
 </div>
 
-<form id="Login">
 <div data-role="content" data-swatch="a">
+<form id="Login">
 
 <div data-role="fieldcontain">
 <label for="inp_tw23">Email:</label>
-<input type="text" id="email1" id="inp_tw23" data-mini="true"/>
+<input type="text" id="email1" data-mini="true">
 </div>
 <div data-role="fieldcontain">
 <label for="inp_tw23">Password:</label>
-<input type="password" id="password1" id="inp_tw23" data-mini="true"/>
+<input type="password" id="password1" data-mini="true">
 </div>
 <div>
 
 <center><input type="button" id="loginbutton" value="Sign In!" data-inline="true"></center>
 </div>
+</form>
 
 </div>
 
-</form>
 
 <div data-role="footer" data-swatch="a" data-position="fixed" data-tap-toggle="false">
 <h1>ⒸGoCent</h1>
@@ -345,25 +347,14 @@ if(localStorage.getItem("existing")!=null)
 
 
 
-// 		$("#loginbutton").click(function(){
-//   $.post("http://1-dot-anuragbagalwadisample.appspot.com/phollar/Login",
-//   {'email': email1.value,'password': password1.value},
-
-//   function(response){
-//     alert(response);
-  
-//   });
-// });
-
-
 		$("#loginbutton").click(function() {
 
 		$.ajax({	
 			dataType: "json",
 			type: "POST",
 			crossdomain: true,
-			url: "http://goskash.appspot.com/phollar/Login",
-			data: {'email': email1.value,'password': password1.value},
+			url: "http://goskash.appspot.com/Login",
+			data: {'email': Login.email1.value,'password': Login.password1.value},
 				success: function(response){
 
 
@@ -385,7 +376,7 @@ if(localStorage.getItem("existing")!=null)
 								window.open("#MenuPage","_self");
 						}
 						else if(response.valid=="false"){
-								alert("Invalid user!");
+								alert(response.error);
 						}
 				},
 								error: function(XMLHttpRequest, textStatus, errorThrown) { 
@@ -397,65 +388,6 @@ if(localStorage.getItem("existing")!=null)
 
 
 		</script>
-
-
-
-
-
-<!--          Customer Wallet Page              -->
-
-
-
-<div id="CustWalletPage" data-url="CustWalletPage" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center></div>
-
-<div data-role="content" data-swatch="a">
-
-<ul data-role="listview" data-inset="true">
-<li data-icon="false"><a href="#"><center>View Cards</center></a></li>
-<li data-icon="false"><a href="#AddCardPage"><center>Add Card</center></a></li>
-</ul>
-</div>
-
-<div data-role="footer" data-swatch="a" data-position="fixed" data-tap-toggle="false">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-<!--          Merchant Wallet Page              -->
-
-
-
-<div id="MerchWalletPage" data-url="MerchWalletPage" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center></div>
-
-<div data-role="content" data-swatch="a">
-
-<ul data-role="listview" data-inset="true">
-<li data-icon="false"><a href="#DashboardPage"><center>Dashboard</center></a></li>
-<li data-icon="false"><a href="#"><center>View Cards</center></a></li>
-<li data-icon="false"><a href="#AddCardPage"><center>Add Card</center></a></li>
-</ul>
-</div>
-
-<div data-role="footer" data-swatch="a"  data-position="fixed" data-tap-toggle="false">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
-
 
 
 
@@ -489,6 +421,8 @@ if(localStorage.getItem("existing")!=null)
  
 
 
+
+
 <!--             Menu Page              -->
 
 
@@ -501,7 +435,7 @@ if(localStorage.getItem("existing")!=null)
 
 <ul data-role="listview" data-inset="true">
 <li data-icon="false"><a href="#" id="scan"><center>Make Payment</center></a></li>
-<li data-icon="false"><a href="#" id="encode"><center>Get Payment</center></a></li>
+<li data-icon="false"><a href="#GetPayment"><center>Get Payment</center></a></li>
 <li data-icon="false"><a href="" onclick="checkIfMerch()"><center>Wallet</center></a></li>
 </ul>
 </div>
@@ -526,16 +460,35 @@ if(localStorage.getItem("existing")!=null)
 </div>
 </div>
 
-<!--
-<div id="DecodePage" data-url="DecodePage" data-role="page">
+
+
+<!-- 					Get Payment						-->
+
+
+<div id="GetPayment" data-url="GetPayment" data-role="page">
 <div data-role="header" data-swatch="a">
-<h1>Scanning...</h1>
+<center><img src="Logo.png" height="40px" width="120px"></center>
 </div>
 
- <div  data-role="content" data-swatch="a">        
-				<p><a href="#" class="topcoat-button" id="scan">SCAN</a></p>
-				<p><a href="#" class="topcoat-button" id="encode">ENCODE</a></p>
-				<p id="info"></p>
+ <div id="formContent" data-role="content" data-swatch="a">        
+
+<Form name="GetPay">
+<div data-role="fieldcontain">
+<label for="inp_tw23">Amount:</label>
+<input type="text" id="amount" data-mini="true">
+</div>
+<div data-role="fieldcontain">
+<label for="inp_tw23">Currency Code:</label>
+<input type="text" id="currency" data-mini="true">
+</div>
+<div>
+
+<center><input type="button" id="getpay" value="QR Code me" data-inline="true"></center>
+</div>
+
+
+</Form>
+
 </div>
 
 <div data-role="footer" data-swatch="a" data-position="fixed">
@@ -543,329 +496,209 @@ if(localStorage.getItem("existing")!=null)
 </div>
 </div>
 
--->
-
-
-
-
-
-<!--           Transaction History           -->
-
-
-<div id="History" data-url="History" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center>
-</div>
-
-<div data-role="content" data-swatch="a">
-
-
-			 <center> <img src="img/dash.png" width="50px" height="50px"><center>        
-					<center><h3 class="header">Transaction History</h3></center>
-					<center><h6>(last 30 days)</h3></center>
-					<div class="ui-body ui-body-a ui-corner-all">
-					<div class="table-responsive"> 
-						<table class="table table-hover table-condensed table-hover">
-							<thead>
-								<tr>
-									<th>Date</th>
-									<th>Transaction ID</th>
-									<th>Customer ID</th>
-									<th>Amount</th>
-									<th>Description</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1,001</td>
-									<td>Lorem</td>
-									<td>ipsum</td>
-									<td>dolor</td>
-									<td>sit</td>
-								</tr>
-								<tr>
-									<td>1,002</td>
-									<td>amet</td>
-									<td>consectetur</td>
-									<td>adipiscing</td>
-									<td>elit</td>
-								</tr>
-								<tr>
-									<td>1,003</td>
-									<td>Integer</td>
-									<td>nec</td>
-									<td>odio</td>
-									<td>Praesent</td>
-								</tr>
-								<tr>
-									<td>1,003</td>
-									<td>libero</td>
-									<td>Sed</td>
-									<td>cursus</td>
-									<td>ante</td>
-								</tr>
-								<tr>
-									<td>1,004</td>
-									<td>dapibus</td>
-									<td>diam</td>
-									<td>Sed</td>
-									<td>nisi</td>
-								</tr>
-								<tr>
-									<td>1,005</td>
-									<td>Nulla</td>
-									<td>quis</td>
-									<td>sem</td>
-									<td>at</td>
-								</tr>
-								<tr>
-									<td>1,006</td>
-									<td>nibh</td>
-									<td>elementum</td>
-									<td>imperdiet</td>
-									<td>Duis</td>
-								</tr>
-								<tr>
-									<td>1,007</td>
-									<td>sagittis</td>
-									<td>ipsum</td>
-									<td>Praesent</td>
-									<td>mauris</td>
-								</tr>
-								<tr>
-									<td>1,008</td>
-									<td>Fusce</td>
-									<td>nec</td>
-									<td>tellus</td>
-									<td>sed</td>
-								</tr>
-								<tr>
-									<td>1,009</td>
-									<td>augue</td>
-									<td>semper</td>
-									<td>porta</td>
-									<td>Mauris</td>
-								</tr>
-								<tr>
-									<td>1,010</td>
-									<td>massa</td>
-									<td>Vestibulum</td>
-									<td>lacinia</td>
-									<td>arcu</td>
-								</tr>
-								<tr>
-									<td>1,011</td>
-									<td>eget</td>
-									<td>nulla</td>
-									<td>Class</td>
-									<td>aptent</td>
-								</tr>
-								<tr>
-									<td>1,012</td>
-									<td>taciti</td>
-									<td>sociosqu</td>
-									<td>ad</td>
-									<td>litora</td>
-								</tr>
-								<tr>
-									<td>1,013</td>
-									<td>torquent</td>
-									<td>per</td>
-									<td>conubia</td>
-									<td>nostra</td>
-								</tr>
-								<tr>
-									<td>1,014</td>
-									<td>per</td>
-									<td>inceptos</td>
-									<td>himenaeos</td>
-									<td>Curabitur</td>
-								</tr>
-								<tr>
-									<td>1,015</td>
-									<td>sodales</td>
-									<td>ligula</td>
-									<td>in</td>
-									<td>libero</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					</div> 
-
-</div>
-
-<div data-role="footer" data-theme="a" data-position="fixed" data-tap-toggle="false">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
- 
-
-
-<!--        Inventory List    -->
-
-
-<div id="Inventory" data-url="Inventory" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center>
-</div>
-
-<div data-role="content" data-swatch="a">
-
-
-			 <center> <img src="img/clipboard.png" width="50px" height="50px"><center>        
-					<center><h3 class="header">Inventory List</h3></center>
-					<div class="ui-body ui-body-a ui-corner-all">
-					<div class="table-responsive"> 
-						<table class="table table-hover table-condensed table-hover">
-							<thead>
-								<tr>
-									<th>Product ID</th>
-									<th>Name</th>
-									<th>Amount</th>
-									<th>Category</th>
-									<th>Description</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1,001</td>
-									<td>Lorem</td>
-									<td>ipsum</td>
-									<td>dolor</td>
-									<td>sit</td>
-								</tr>
-								<tr>
-									<td>1,002</td>
-									<td>amet</td>
-									<td>consectetur</td>
-									<td>adipiscing</td>
-									<td>elit</td>
-								</tr>
-								<tr>
-									<td>1,003</td>
-									<td>Integer</td>
-									<td>nec</td>
-									<td>odio</td>
-									<td>Praesent</td>
-								</tr>
-								<tr>
-									<td>1,003</td>
-									<td>libero</td>
-									<td>Sed</td>
-									<td>cursus</td>
-									<td>ante</td>
-								</tr>
-								<tr>
-									<td>1,004</td>
-									<td>dapibus</td>
-									<td>diam</td>
-									<td>Sed</td>
-									<td>nisi</td>
-								</tr>
-								<tr>
-									<td>1,005</td>
-									<td>Nulla</td>
-									<td>quis</td>
-									<td>sem</td>
-									<td>at</td>
-								</tr>
-								<tr>
-									<td>1,006</td>
-									<td>nibh</td>
-									<td>elementum</td>
-									<td>imperdiet</td>
-									<td>Duis</td>
-								</tr>
-								<tr>
-									<td>1,007</td>
-									<td>sagittis</td>
-									<td>ipsum</td>
-									<td>Praesent</td>
-									<td>mauris</td>
-								</tr>
-								<tr>
-									<td>1,008</td>
-									<td>Fusce</td>
-									<td>nec</td>
-									<td>tellus</td>
-									<td>sed</td>
-								</tr>
-								<tr>
-									<td>1,009</td>
-									<td>augue</td>
-									<td>semper</td>
-									<td>porta</td>
-									<td>Mauris</td>
-								</tr>
-								<tr>
-									<td>1,010</td>
-									<td>massa</td>
-									<td>Vestibulum</td>
-									<td>lacinia</td>
-									<td>arcu</td>
-								</tr>
-								<tr>
-									<td>1,011</td>
-									<td>eget</td>
-									<td>nulla</td>
-									<td>Class</td>
-									<td>aptent</td>
-								</tr>
-								<tr>
-									<td>1,012</td>
-									<td>taciti</td>
-									<td>sociosqu</td>
-									<td>ad</td>
-									<td>litora</td>
-								</tr>
-								<tr>
-									<td>1,013</td>
-									<td>torquent</td>
-									<td>per</td>
-									<td>conubia</td>
-									<td>nostra</td>
-								</tr>
-								<tr>
-									<td>1,014</td>
-									<td>per</td>
-									<td>inceptos</td>
-									<td>himenaeos</td>
-									<td>Curabitur</td>
-								</tr>
-								<tr>
-									<td>1,015</td>
-									<td>sodales</td>
-									<td>ligula</td>
-									<td>in</td>
-									<td>libero</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					</div> 
-
-</div>
-
-<div data-role="footer" data-theme="a" data-position="fixed" data-tap-toggle="false">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
 
 
 
 <script>
 
-if(JSON.parse(localStorage.getItem("allcards"))!=null)
-{
-var cards=[];
-cards=JSON.parse(localStorage.getItem("allcards"));
-var cardNumber=JSON.stringify(cards[0].cardNo);
 
 
-}
+$("#getpay").click(function() {
+
+		$.ajax({	
+			dataType: "json",
+			type: "GET",
+			crossdomain: true,
+			url: "http://goskash.appspot.com/phollar/createTransaction",
+			data: {'merchantId': localStorage.getItem("id"),'amount': amount.value,'currencyCode':currency.value,'peer': 'true'},
+			beforeSend: function (request) {
+             request.setRequestHeader("token", localStorage.getItem("id"));
+            },
+				success: function(response){
+
+
+						if(response.valid=="true"){
+
+						 
+						// window.open(JSON.stringify(response.url),"_self");
+
+						$('#formContent').html('<img src='+response.url+'>');
+
+						}
+						else if(response.valid=="false"){
+								alert(response.error);
+						}
+				},
+								error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+                }
+
+		});
+		});
+
+
+
 
 </script>
+
+
+
+
+
+
+<!--          Customer Wallet Page              -->
+
+
+
+<div id="CustWalletPage" data-url="CustWalletPage" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center></div>
+
+<div data-role="content" data-swatch="a">
+
+<ul data-role="listview" data-inset="true">
+<li data-icon="false"><a href="#"><center>View Cards</center></a></li>
+<li data-icon="false"><a href="#AddCard"><center>Add Card</center></a></li>
+</ul>
+</div>
+
+<div data-role="footer" data-swatch="a" data-position="fixed" data-tap-toggle="false">
+<h1>ⒸGoCent</h1>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--          Merchant Wallet Page              -->
+
+
+
+<div id="MerchWalletPage" data-url="MerchWalletPage" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center></div>
+
+<div data-role="content" data-swatch="a">
+
+<ul data-role="listview" data-inset="true">
+<li data-icon="false"><a href="#DashboardPage"><center>Dashboard</center></a></li>
+<li data-icon="false"><a href="#"><center>View Cards</center></a></li>
+<li data-icon="false"><a href="#AddCard"><center>Add Card</center></a></li>
+</ul>
+</div>
+
+<div data-role="footer" data-swatch="a"  data-position="fixed" data-tap-toggle="false">
+<h1>ⒸGoCent</h1>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--           Add Card Page        -->
+
+
+
+<div id="AddCard" data-url="AddCard" data-role="page">
+
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center>
+
+</div>
+
+
+<div data-role="content" data-swatch="a">
+			<center> <img src="img/card.png" width="50px" height="50px"><center>        
+
+<h3>Card Details</h3>
+
+
+<form id="newcard">
+
+<div data-role="fieldcontain">
+<label for="inp_tw31">Name on card</label>
+<input type="text" id="cardname">
+</div>
+<div data-role="fieldcontain">
+<label for="inp_tw23">Card No</label>
+<input type="text" id="cno" value="xxxxxxxxxxxxxxxx" data-mini="true">
+</div>
+<div data-role="fieldcontain">
+<label for="sel_tw28">Validity(MM/YY)</label>
+<input type="text" id="val" data-mini="true">
+</div>
+<div data-role="fieldcontain">
+<label for="inp_tw32">CVV</label>
+<input type="text" id="cvv">
+</div>
+<div>
+<center><input type="button" value="save" id="addcardbutton" data-inline="true"></center>
+</div>
+</form>
+
+</div>
+
+<div data-role="footer" data-swatch="a" data-position="fixed" data-tap-toggle="false">
+<h1>ⒸGoCent</h1>
+</dsiv>
+</div>
+
+
+
+		<script>
+
+
+	$("#addcardbutton").click(function() {
+
+
+		var card={};
+
+		card.nameOnCard=cardname.value;
+
+		card.cardNo=cno.value;
+
+		card.exp=val.value;
+
+		card.cvv=cvv.value;
+
+		var allcardsString = localStorage.getItem("allcards");
+		var allcards=[];
+
+		if(allcardsString!=null) {
+			
+			allcards = JSON.parse(allcardsString);
+		}
+
+		allcards[allcards.length] = card;
+
+		localStorage["allcards"] = JSON.stringify(allcards);
+
+		window.open("#MenuPage","_self");
+
+		});
+
+		
+		</script>
+
+
+
+
+
+
+
 
 
 
@@ -877,17 +710,21 @@ var cardNumber=JSON.stringify(cards[0].cardNo);
 </div>
 
 <div data-role="content" data-swatch="a">
+<div class="cardlist">
 
 <h1>Select Card</h1>
-<div data-role="fieldcontain">
+ <div data-role="fieldcontain">
 <center><input type="button" id="0" value="card0" class="card" data-inline="true"></center>
+</div>
+<!--
+<div data-role="fieldcontain">
 <center><input type="button" id="1" value="card1" class="card" data-inline="true"></center>
+</div> -->
 </div>
 </div>
 
 <div data-role="footer" data-swatch="a" data-position="fixed" data-tap-toggle="false">
 <h1>ⒸGoCent</h1>
-</div>
 </div>
 
 <script>
@@ -905,6 +742,9 @@ $('.card').click(function() {
 			dataType: "json",
 			type: "POST",
 			crossdomain: true,
+			beforeSend: function (request) {
+       request.setRequestHeader("token", localStorage.getItem("id"));
+       },
 			url: "http://goskash.appspot.com/phollar/PayAPI",
 			data: {'userId': localStorage.getItem("id"),'productId': localStorage.getItem("productId"),'cardNo': cards[parseInt(selectedCard)].cardNo, 'cardExp':cards[parseInt(selectedCard)].exp, 'cvv': cards[parseInt(selectedCard)].cvv},
 				success: function(response){
@@ -930,123 +770,17 @@ $('.card').click(function() {
 
 
 
-	 $('button').on('click', LoadDetails(a,b,c));
 
 </script>
 
 
 
 
-<!--           Add Card Page        -->
-
-
-
-<div id="AddCardPage" data-url="AddCardPage" data-role="page">
-<div data-role="header" data-swatch="a">
-<center><img src="Logo.png" height="40px" width="120px"></center>
-
-</div>
-
-<form id="newcard">
-
-<div data-role="content" data-swatch="a">
-			<center> <img src="img/card.png" width="50px" height="50px"><center>        
-
-<h3>Card Details</h3>
-
-
-
-<div data-role="fieldcontain">
-<label for="inp_tw31">Name on card</label>
-<input type="text" id="cardname"/>
-</div>
-<div data-role="fieldcontain">
-<label for="inp_tw23">Card No</label>
-<input type="text" id="cno" value="xxxxxxxxxxxxxxxx" data-mini="true"/>
-</div>
-<div data-role="fieldcontain">
-<label for="sel_tw28">Validity(MM/YY)</label>
-<input type="text" id="val" data-mini="true"/>
-</div>
-<div data-role="fieldcontain">
-<label for="inp_tw32">CVV</label>
-<input type="text" id="cvv"/>
-</div>
-<div>
-<center><input type="button" value="save" id="addcardbutton" data-inline="true"></center>
-</div>
-</div>
-</form>
-
-<div data-role="footer" data-swatch="a" data-position="fixed" data-tap-toggle="false">
-<h1>ⒸGoCent</h1>
-</div>
-</div>
-
-
-
-		<script>
-
-
-	$("#addcardbutton").click(function() {
-
-		var card={};
-
-		card.nameOnCard=cardname.value;
-
-		card.cardNo=cno.value;
-
-		card.exp=val.value;
-
-		card.cvv=cvv.value;
-
-		var allcardsString = localStorage.getItem("allcards");
-		var allcards=[];
-
-		if(allcardsString!=null) {
-			
-			allcards = JSON.parse(allcardsString);
-		}
-
-		allcards[allcards.length] = card;
-
-		localStorage["allcards"] = JSON.stringify(allcards);
-
-		//console.log(localStorage.getItem("allcards"));
-
-
-			// $.ajax({
-			//   type: "POST",
-			//   url:  "http://1-dot-anuragbagalwadisample.appspot.com/phollar/AddCard",
-			//   crossdomain: true,
-			//   data: {'id' : localStorage.getItem("id"), 'cardNo' : cno.value, 'exp' : val.value, 'cvv' : cvv.value},
-			//   success: function(response){
-
-
-		 // 				if(response.valid=="true"){
-
-
-		 // 					document.write(JSON.stringify(response));
-
-
-		 // 				}
-		 // 				else if(response.valid=="false"){
-		 // 						alert("Invalid user!");
-		 // 				}
-		 // 		},
-		 // 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
-   //                   alert("Status: " + textStatus); alert("Error: " + errorThrown); 
-   //               },
-			//   dataType: "json"
-			// });
 
 
 
 
-		});
 
-		
-		</script>
 
 
 

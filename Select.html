@@ -1,0 +1,111 @@
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+ <link rel="stylesheet" href="jquery.mobile-1.1.0.custom.css?" />
+ -->    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+				<meta name="format-detection" content="telephone=no" />
+	 <!--     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
+				<link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" href="themes/PhollarPay.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.structure-1.4.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+
+<link href="css/bootstrap.min.css" rel="stylesheet"> 
+
+
+<link href="dashboard.css" rel="stylesheet">		
+
+<script type="text/javascript" src="cordova.js"></script>
+				 <script type="text/javascript" src="barcodescanner.js"></script>
+				 <script type="text/javascript" src="childbrowser.js"></script>
+				 <script type="text/javascript" src="js/index.js"></script>
+
+
+
+</head>
+<body>
+
+<!--                Select card Page                -->
+
+<div id="SelectCard" data-url="SelectCard" data-role="page">
+<div data-role="header" data-swatch="a">
+<center><img src="Logo.png" height="40px" width="120px"></center>
+</div>
+
+<div data-role="content" data-swatch="a">
+<div class="cardlist">
+
+<h1>Select Card</h1>
+ <div data-role="fieldcontain">
+<center><input type="button" id="0" value="card0" class="card" data-inline="true"></center>
+</div>
+<!--
+<div data-role="fieldcontain">
+<center><input type="button" id="1" value="card1" class="card" data-inline="true"></center>
+</div> -->
+</div>
+</div>
+
+<div data-role="footer" data-swatch="a" data-position="fixed" data-tap-toggle="false">
+<h1>ⒸGoCent</h1>
+</div>
+
+<script>
+
+$('.card').click(function() {
+
+
+	var selectedCard = $(this).attr('id');
+	var cards=[];
+	cards=JSON.parse(localStorage.getItem("allcards"));
+
+		//alert(JSON.stringify(cards[0]));
+
+		$.ajax({	
+			dataType: "json",
+			type: "POST",
+			crossdomain: true,
+			beforeSend: function (request) {
+       request.setRequestHeader("token", localStorage.getItem("id"));
+       },
+			url: "http://goskash.appspot.com/phollar/PayAPI",
+			data: {'userId': localStorage.getItem("id"),'productId': localStorage.getItem("productId"),'cardNo': cards[parseInt(selectedCard)].cardNo, 'cardExp':cards[parseInt(selectedCard)].exp, 'cvv': cards[parseInt(selectedCard)].cvv},
+				success: function(response){
+
+
+						if(response.valid=="true"){
+
+							alert("Succesful Payment!");
+
+								window.open("#MenuPage","_self");
+						}
+						else if(response.valid=="false"){
+								alert("Payment Failed!");
+						}
+				},
+								error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+                }
+
+		});
+
+	});
+
+
+
+
+</script>
+
+
+
+				 
+</body>
+</html>

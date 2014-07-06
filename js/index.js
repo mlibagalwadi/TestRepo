@@ -28,7 +28,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.getElementById('scan').addEventListener('click', this.scan, false);
-        document.getElementById('encode').addEventListener('click', this.encode, false);
+       // document.getElementById('encode').addEventListener('click', this.encode, false);
     },
 
     // deviceready Event Handler
@@ -59,29 +59,40 @@ var app = {
         scanner.scan( function (result) { 
 
 
+          localStorage["transactionId"]=result.transactionId;
+         
 
-          localStorage["productId"]=result.productId;
-          $.ajax({  
-            dataType: "json",
-            type: "GET",
-            crossdomain: true,
-            url: "http://goskash.appspot.com/phollar/GetProductDetails",
-            data: {'productId': result.productId},
-              success: function(response){
-
-
-            alert("Product Name: "+response.productName+"\n"+
-              "Product Description: "+response.productDesc+"\n"+
-              "Amount: "+response.amount+"\n"+
-              "Currency Code: "+response.currencyCode+"\n"+
+             alert("Amount: "+result.amount+"\n"+
+              "Currency Code: "+result.currencyCode+"\n"+
               "Merchant Name: "+result.merchantName+"\n");
 
-            }
-
-            });
 
 
-          window.open("#SelectCard","_self");
+
+          // $.ajax({  
+          //   dataType: "json",
+          //   type: "GET",
+          //   crossdomain: true,
+          //   beforeSend: function (request) {
+          //    request.setRequestHeader("token", localStorage.getItem("id"));
+          //   },
+          //   url: "http://goskash.appspot.com/phollar/GetTransactionDetails",
+          //   data: {'TransactionId': result.TransactionId},
+          //     success: function(response){
+
+
+          //   alert("Product Name: "+response.+"\n"+
+          //     "Product Description: "+response.productDesc+"\n"+
+          //     "Amount: "+response.amount+"\n"+
+          //     "Currency Code: "+response.currencyCode+"\n"+
+          //     "Merchant Name: "+result.merchantName+"\n");
+
+          //   }
+
+          //   });
+
+
+          window.open("Select.html","_self");
 
 
           
