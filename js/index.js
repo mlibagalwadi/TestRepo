@@ -60,8 +60,7 @@ var app = {
 
         //   var res=JSON.parse(result);
 
-          var x=result.text;
-          localStorage["transactionId"]=JSON.parse(x).transactionId;
+        //  localStorage["transactionId"]=JSON.parse(result.text).transactionId;
          
            
 
@@ -70,6 +69,8 @@ var app = {
 
        // alert(JSON.parse(result.text).transactionId);
 
+
+        alert(result.text);
 
           window.open("Select.html","_self");
 
