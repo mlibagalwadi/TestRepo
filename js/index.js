@@ -64,7 +64,7 @@ var app = {
 
         alert(something.transactionId);
 
-        //  localStorage["transactionId"]=JSON.parse(result.text).transactionId;
+        localStorage["transactionId"]= something.transactionId;
          
            
 
