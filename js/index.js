@@ -62,9 +62,9 @@ var app = {
           localStorage["transactionId"]=result.transactionId;
          
 
-             alert("Amount: "+result.amount+"\n"+
-              "Currency Code: "+result.currencyCode+"\n"+
-              "Merchant Name: "+result.merchantName+"\n");
+             alert("Amount: "+JSON.stringify(result.amount)+"\n"+
+              "Currency Code: "+JSON.stringify(result.currencyCode)+"\n"+
+              "Merchant Name: "+JSON.stringify(result.merchantName)+"\n");
 
 
 
