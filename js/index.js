@@ -64,12 +64,12 @@ var app = {
          
            
 
-          alert(result);  
+          alert("Transaction ID: "+result.transactionId+"\n"+"Amount: "+result.amount+"\nMerchant Name: "+result.merchantName);  
 
 
 
 
-        //  window.open("Select.html","_self");
+          window.open("Select.html","_self");
 
             /*
             if (args.format == "QR_CODE") {
