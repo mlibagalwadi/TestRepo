@@ -88,7 +88,7 @@ $('.card').click(function() {
        request.setRequestHeader("token", localStorage.getItem("id"));
        },
 			url: "http://goskash.appspot.com/phollar/PayAPI",
-			data: {'userId': localStorage.getItem("id"),'productId': localStorage.getItem("transactionId"),'cardNo': cards[parseInt(selectedCard)].cardNo, 'cardExpiry':cards[parseInt(selectedCard)].exp, 'cvv': cards[parseInt(selectedCard)].cvv},
+			data: {'userId': localStorage.getItem("id"),'transactionId': localStorage.getItem("transactionId"),'cardNo': cards[parseInt(selectedCard)].cardNo, 'cardExpiry':cards[parseInt(selectedCard)].exp, 'cvv': cards[parseInt(selectedCard)].cvv},
 				success: function(response){
 
 
