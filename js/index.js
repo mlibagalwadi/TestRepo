@@ -58,16 +58,18 @@ var app = {
 
         scanner.scan(function (result) { 
 
-           var res=JSON.parse(result);
+        //   var res=JSON.parse(result);
 
           localStorage["transactionId"]=result.transactionId;
          
-              document.write("Amount: "+res.amount+"\n"+
-               "Currency Code: "+res.currencyCode+"\n"+
-               "Merchant Name: "+res.merchantName+"\n");
+           
+
+          alert(result);  
 
 
-          window.open("Select.html","_self");
+
+
+        //  window.open("Select.html","_self");
 
             /*
             if (args.format == "QR_CODE") {
