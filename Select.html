@@ -79,6 +79,7 @@ $('.card').click(function() {
 	cards=JSON.parse(localStorage.getItem("allcards"));
 
 		//alert(JSON.stringify(cards[0]));
+		alert(localStorage.getItem("transactionId"));
 
 		$.ajax({	
 			dataType: "json",
@@ -99,6 +100,7 @@ $('.card').click(function() {
 								window.open("#MenuPage","_self");
 						}
 						else if(response.valid=="false"){
+							alert(localStorage.getItem("transactionId"));
 								alert("Payment Failed!");
 						}
 				},
