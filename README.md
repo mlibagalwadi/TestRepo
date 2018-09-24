@@ -1,6 +1,9 @@
-BarcodeDemo
+TheSkashWallet
 ===========
 
 A PhoneGap app demoing the [BarcodeScanner Plugin](http://github.com/wildabeast/BarcodeScanner).
 
 Includes config.xml file for [PhoneGap Build](https://build.phonegap.com).
+
+
+Phonegap mobile wallet app to make swift payments by scanning QR codes.
